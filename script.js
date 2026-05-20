@@ -1,5 +1,5 @@
 /* =============================================
-   UNDANGAN PERNIKAHAN - Farrel & Amelia
+   UNDANGAN PERNIKAHAN - Pandu & Rina
    script.js
    ============================================= */
 
@@ -21,15 +21,6 @@ function openInvitation() {
 
   document.getElementById('bottom-nav').classList.add('show');
   document.getElementById('musicBtn').classList.add('show');
-
-  // Auto play musik
-  setTimeout(() => {
-    music.play().then(() => {
-      isPlaying = true;
-      musicBtn.classList.add('playing');
-      musicBtn.innerText = '🎶';
-    }).catch(e => console.log('Autoplay blocked:', e));
-  }, 1000);
 
   // Scroll ke atas setelah transisi
   setTimeout(() => {
@@ -140,7 +131,7 @@ function submitRSVP() {
   // Ganti nomor WA berikut dengan nomor mempelai
   const waNumber = '6285194792312';
   const msg = encodeURIComponent(
-    `Assalamu'alaikum,\n\nSaya *${nama}* menyampaikan:\n\nKehadiran: ${hadirText}\n\nUcapan/Doa:\n${ucapan}\n\nSemoga pernikahan Farrel & Amelia sakinah, mawaddah, warahmah. Aamiin 🌸`
+    `Assalamu'alaikum,\n\nSaya *${nama}* menyampaikan:\n\nKehadiran: ${hadirText}\n\nUcapan/Doa:\n${ucapan}\n\nSemoga pernikahan Pandu & Rina sakinah, mawaddah, warahmah. Aamiin 🌸`
   );
 
   window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
@@ -159,6 +150,11 @@ const musicBtn = document.getElementById('musicBtn');
 let isPlaying  = false;
 
 function toggleMusic() {
+  if (!music || !music.src || music.src === window.location.href) {
+    alert('Tambahkan file musik (musik.mp3) dan isi src pada tag <audio> di index.html');
+    return;
+  }
+
   if (isPlaying) {
     music.pause();
     musicBtn.classList.remove('playing');
