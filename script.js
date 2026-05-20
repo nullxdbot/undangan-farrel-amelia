@@ -22,6 +22,15 @@ function openInvitation() {
   document.getElementById('bottom-nav').classList.add('show');
   document.getElementById('musicBtn').classList.add('show');
 
+  // Auto play musik
+  setTimeout(() => {
+    music.play().then(() => {
+      isPlaying = true;
+      musicBtn.classList.add('playing');
+      musicBtn.innerText = '🎶';
+    }).catch(e => console.log('Autoplay blocked:', e));
+  }, 1000);
+
   // Scroll ke atas setelah transisi
   setTimeout(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -150,11 +159,6 @@ const musicBtn = document.getElementById('musicBtn');
 let isPlaying  = false;
 
 function toggleMusic() {
-  if (!music || !music.src || music.src === window.location.href) {
-    alert('Tambahkan file musik (musik.mp3) dan isi src pada tag <audio> di index.html');
-    return;
-  }
-
   if (isPlaying) {
     music.pause();
     musicBtn.classList.remove('playing');
