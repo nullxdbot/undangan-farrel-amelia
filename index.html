@@ -6,30 +6,51 @@
   <title>The Wedding of Farrel & Amelia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="cover">
-  <div class="floral-corner top-left"></div>
-  <div class="floral-corner top-right"></div>
-  <div class="floral-corner bottom-left"></div>
-  <div class="floral-corner bottom-right"></div>
+<!-- PARTICLES CANVAS -->
+<canvas id="particleCanvas"></canvas>
 
-  <div class="butterfly b1">🦋</div>
-  <div class="butterfly b2">🦋</div>
-  <div class="butterfly b3">🦋</div>
+<!-- COVER -->
+<div id="cover">
+  <div class="cover-bg-aurora"></div>
+  <div class="cover-stars"></div>
+
+  <div class="cover-frame tl"></div>
+  <div class="cover-frame tr"></div>
+  <div class="cover-frame bl"></div>
+  <div class="cover-frame br"></div>
 
   <div class="cover-inner">
-    <p class="cover-label">THE WEDDING OF</p>
-
-    <div class="cover-photo">
-      <img src="img/kita.jpg" alt="Farrel & Amelia">
+    <div class="cover-top-ornament">
+      <span class="ornament-line"></span>
+      <span class="ornament-diamond">◆</span>
+      <span class="ornament-line"></span>
     </div>
 
-    <h1 class="cover-names">Farrel <span class="ampersand">&</span> Amelia</h1>
-    <p class="cover-date">Sabtu, 23 Mei 2026</p>
+    <p class="cover-label">— The Wedding of —</p>
+
+    <div class="cover-photo-wrap">
+      <div class="cover-photo-ring"></div>
+      <div class="cover-photo">
+        <img src="img/kita.jpg" alt="Farrel & Amelia">
+      </div>
+    </div>
+
+    <h1 class="cover-names">
+      <span class="name-part">Farrel</span>
+      <span class="cover-amp">&</span>
+      <span class="name-part">Amelia</span>
+    </h1>
+
+    <p class="cover-date">
+      <span class="date-day">Sabtu</span>
+      <span class="date-sep">·</span>
+      <span class="date-full">23 Mei 2026</span>
+    </p>
 
     <div class="guest-box">
       <small>Kepada Yth.</small>
@@ -37,33 +58,45 @@
     </div>
 
     <button class="btn-open" onclick="openInvitation()">
-      <span class="btn-icon">✉</span> Buka Undangan
+      <span class="btn-envelope">✦</span>
+      <span>Buka Undangan</span>
+      <span class="btn-shimmer"></span>
     </button>
+
+    <div class="cover-bottom-ornament">
+      <span class="ornament-line"></span>
+      <span class="ornament-diamond">◆</span>
+      <span class="ornament-line"></span>
+    </div>
   </div>
 </div>
 
+<!-- MAIN CONTENT -->
 <main id="main-content">
 
-  <div class="bg-floral-left"></div>
-  <div class="bg-floral-right"></div>
-
+  <!-- Section 1: Hero -->
   <section class="section fade-in" id="sec-home">
-    <div class="section-deco top"></div>
+    <div class="hero-aurora"></div>
 
-    <div class="save-the-date-banner">
-      <span class="std-text">Save The Date</span>
+    <div class="hero-badge">Save The Date</div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo">
+        <img src="img/kita.jpg" alt="Farrel & Amelia">
+      </div>
     </div>
 
-    <div class="couple-photo-main">
-      <img src="img/kita.jpg" alt="Farrel & Amelia">
+    <h2 class="hero-names">
+      Farrel <span class="gold-amp">&</span> Amelia
+    </h2>
+
+    <div class="ornament-divider">
+      <span></span><i>✦</i><span></span>
     </div>
-
-    <h2 class="main-names">Farrel <span class="ampersand">&</span> Amelia</h2>
-
-    <div class="divider-ornament"><span>❧</span></div>
 
     <blockquote class="ayat">
-      "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+      <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
       <cite>— QS. Ar-Rum: 21 —</cite>
     </blockquote>
 
@@ -90,29 +123,31 @@
     </div>
   </section>
 
+  <!-- Section 2: Mempelai -->
   <section class="section fade-in">
     <div class="sec-header">
-      <p class="sec-sub">Mempelai</p>
+      <p class="sec-eyebrow">Mempelai</p>
       <h2 class="sec-title">The Happy Couple</h2>
+      <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
 
     <div class="mempelai-grid">
       <div class="mempelai-card">
         <div class="mempelai-photo groom-photo">
-          <img src="img/farrel.jpg" alt="Farrel Aulia Irfealdo">
+          <img src="img/farrel.jpg" alt="Farrel">
         </div>
         <h3 class="mempelai-name">Farrel</h3>
         <p class="mempelai-full">Farrel Aulia Irfealdo</p>
         <p class="mempelai-parents">Putra dari<br>Bpk. _______ & Ibu _______</p>
       </div>
 
-      <div class="mempelai-divider">
-        <span class="heart-icon">♡</span>
+      <div class="mempelai-center">
+        <div class="heart-pulse">♡</div>
       </div>
 
       <div class="mempelai-card">
         <div class="mempelai-photo bride-photo">
-          <img src="img/amelia.jpg" alt="Amelia Sofyan">
+          <img src="img/amelia.jpg" alt="Amelia">
         </div>
         <h3 class="mempelai-name">Amelia</h3>
         <p class="mempelai-full">Amelia Sofyan</p>
@@ -121,36 +156,39 @@
     </div>
   </section>
 
+  <!-- Section 3: Acara -->
   <section class="section fade-in" id="sec-acara">
     <div class="sec-header">
-      <p class="sec-sub">Agenda</p>
+      <p class="sec-eyebrow">Agenda</p>
       <h2 class="sec-title">Rangkaian Acara</h2>
-      <p class="sec-date-sub">Sabtu, 23 Mei 2026</p>
+      <p class="sec-date-label">Sabtu, 23 Mei 2026</p>
+      <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
 
-    <div class="acara-list">
-      <div class="acara-card">
-        <div class="acara-badge">09.00 PAGI</div>
-        <div class="acara-content">
-          <h3 class="acara-type">Akad</h3>
+    <div class="acara-timeline">
+      <div class="acara-item">
+        <div class="acara-time-col">
+          <div class="acara-time-badge">09.00</div>
+          <div class="acara-line"></div>
+        </div>
+        <div class="acara-card">
+          <div class="acara-icon">🕌</div>
+          <h3 class="acara-type">Akad Nikah</h3>
           <p class="acara-place">Balai KUA Marpoyan Damai</p>
           <p class="acara-addr">Jl. Kartama No. Ujung Perhentian Marpoyan, Kec. Marpoyan Damai</p>
         </div>
-        <div class="acara-deco">🕌</div>
       </div>
 
-      <div class="acara-connector">
-        <div class="connector-line"></div>
-      </div>
-
-      <div class="acara-card">
-        <div class="acara-badge">10.00 PAGI</div>
-        <div class="acara-content">
+      <div class="acara-item">
+        <div class="acara-time-col">
+          <div class="acara-time-badge">10.00</div>
+        </div>
+        <div class="acara-card">
+          <div class="acara-icon">🎊</div>
           <h3 class="acara-type">Resepsi</h3>
           <p class="acara-place">Kediaman Mempelai Wanita</p>
           <p class="acara-addr">Jl. Inpres Komp. BSA Blok A No. 30, di belakang Posyandu Kasih Bunda</p>
         </div>
-        <div class="acara-deco">🎊</div>
       </div>
     </div>
 
@@ -162,26 +200,29 @@
     </div>
 
     <div class="btn-group">
-      <a href="https://www.google.com/maps?q=0.4602778,101.4246944" target="_blank" class="btn-maps">
-        📍 Buka di Google Maps
+      <a href="https://www.google.com/maps?q=0.4602778,101.4246944" target="_blank" class="btn-outline">
+        📍 Google Maps
       </a>
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Farrel+%26+Amelia&dates=20260523T020000Z/20260523T070000Z"
-         target="_blank" class="btn-cal">
-        📅 Simpan ke Kalender
+         target="_blank" class="btn-solid">
+        📅 Simpan Kalender
       </a>
     </div>
   </section>
 
+  <!-- Section 4: Gift -->
   <section class="section fade-in">
     <div class="sec-header">
-      <p class="sec-sub">Hadiah</p>
+      <p class="sec-eyebrow">Hadiah</p>
       <h2 class="sec-title-script">Wedding Gift</h2>
+      <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
 
     <div class="gift-card">
+      <div class="gift-glow"></div>
       <div class="gift-header">
         <span class="gift-bank">DANA</span>
-        <span class="gift-type-badge">e-Wallet</span>
+        <span class="gift-badge">e-Wallet</span>
       </div>
       <div class="gift-number" id="rek0">085194792312</div>
       <div class="gift-name">a.n Amelia Sofyan</div>
@@ -191,10 +232,12 @@
     </div>
   </section>
 
+  <!-- Section 5: RSVP -->
   <section class="section fade-in" id="sec-rsvp">
     <div class="sec-header">
-      <p class="sec-sub">Konfirmasi</p>
+      <p class="sec-eyebrow">Konfirmasi</p>
       <h2 class="sec-title-script">RSVP & Ucapan</h2>
+      <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
 
     <div class="form-wrap">
@@ -212,10 +255,11 @@
       </div>
       <div class="form-group">
         <label>Pesan / Doa</label>
-        <textarea id="ucapan" placeholder="Tulis ucapan..."></textarea>
+        <textarea id="ucapan" placeholder="Tulis ucapan & doa untuk mempelai..."></textarea>
       </div>
-      <button class="btn-submit" onclick="submitRSVP()">
-        <span>🟢</span> Kirim via WhatsApp
+      <button class="btn-whatsapp" onclick="submitRSVP()">
+        <span>💬</span> Kirim via WhatsApp
+        <span class="btn-shimmer"></span>
       </button>
       <div id="rsvp-success">✅ Terima kasih atas doa & ucapannya!</div>
     </div>
@@ -223,36 +267,97 @@
 
 </main>
 
+<!-- FOOTER -->
 <footer>
-  <div class="footer-floral"></div>
-  <h2 class="footer-names">Farrel <span class="ampersand">&</span> Amelia</h2>
-  <p class="footer-msg">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
+  <div class="footer-aurora"></div>
+  <div class="ornament-divider footer-orn"><span></span><i>✦</i><span></span></div>
+  <h2 class="footer-names">Farrel <span class="gold-amp">&</span> Amelia</h2>
+  <p class="footer-msg">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu.</p>
   <p class="footer-salam">Wassalamu'alaikum Wr. Wb.</p>
-  <div class="footer-divider"><span>♡</span></div>
+  <div class="ornament-divider sm"><span></span><i>♡</i><span></span></div>
   <p class="footer-brand">Dibuat dengan ❤️ untuk Farrel & Amelia</p>
 </footer>
 
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav" id="bottom-nav">
   <a href="#sec-home" class="nav-item active" data-section="home">
     <span class="nav-icon">🏠</span>
+    <span class="nav-label">Home</span>
   </a>
   <a href="#sec-acara" class="nav-item" data-section="acara">
     <span class="nav-icon">📅</span>
+    <span class="nav-label">Acara</span>
   </a>
   <a href="#" class="nav-item" data-section="gallery">
     <span class="nav-icon">🖼</span>
+    <span class="nav-label">Gallery</span>
   </a>
   <a href="#sec-rsvp" class="nav-item" data-section="rsvp">
     <span class="nav-icon">💌</span>
+    <span class="nav-label">RSVP</span>
   </a>
 </nav>
 
-<button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+<!-- MUSIC BTN -->
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+  <span class="music-icon">🎵</span>
+  <div class="music-rings"></div>
+</button>
 
 <audio id="bgMusic" loop>
   <source src="img/Marry-Your-Daughter.mp3" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
+<script>
+// Particle canvas animation
+(function() {
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createParticle() {
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2.5 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: -Math.random() * 0.4 - 0.1,
+      opacity: Math.random() * 0.5 + 0.1,
+      color: Math.random() > 0.6 ? '#c9a84c' : '#7ab8e8'
+    };
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({ length: 60 }, createParticle);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.opacity;
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.y < -10) particles[i] = { ...createParticle(), y: canvas.height + 10 };
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  animate();
+})();
+</script>
 </body>
 </html>
