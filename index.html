@@ -3,86 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="description" content="Undangan Pernikahan Farrel & Amelia — 23 Mei 2026">
-  <title>The Wedding of Farrel & Amelia</title>
+  <title>The Wedding of Pandu & Rina</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@500;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ===== BACKGROUND ===== -->
-<div class="page-bg"></div>
-
-<!-- ===== FLOATING FLORAL SVG CORNERS (full screen) ===== -->
-<!-- Top-left floral -->
-<svg style="position:fixed;top:0;left:0;width:220px;pointer-events:none;z-index:1;opacity:0.55" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="30" cy="30" r="55" fill="none" stroke="#5b9ec9" stroke-width="0.8" opacity="0.4"/>
-  <ellipse cx="80" cy="20" rx="30" ry="18" fill="#a8cfe8" opacity="0.25" transform="rotate(-20 80 20)"/>
-  <ellipse cx="20" cy="80" rx="22" ry="35" fill="#7ab3d4" opacity="0.2" transform="rotate(30 20 80)"/>
-  <ellipse cx="60" cy="55" rx="40" ry="25" fill="#c5dff5" opacity="0.35" transform="rotate(-35 60 55)"/>
-  <circle cx="90" cy="40" r="12" fill="#5b9ec9" opacity="0.15"/>
-  <circle cx="40" cy="100" r="8"  fill="#2a6496" opacity="0.1"/>
-  <!-- butterfly hint -->
-  <ellipse cx="130" cy="18" rx="18" ry="10" fill="#a8cfe8" opacity="0.3" transform="rotate(-40 130 18)"/>
-  <ellipse cx="150" cy="28" rx="12" ry="7"  fill="#5b9ec9" opacity="0.25" transform="rotate(20 150 28)"/>
-</svg>
-
-<!-- Top-right floral -->
-<svg style="position:fixed;top:0;right:0;width:200px;pointer-events:none;z-index:1;opacity:0.55;transform:scaleX(-1)" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="30" cy="30" r="55" fill="none" stroke="#5b9ec9" stroke-width="0.8" opacity="0.4"/>
-  <ellipse cx="80" cy="20" rx="30" ry="18" fill="#a8cfe8" opacity="0.25" transform="rotate(-20 80 20)"/>
-  <ellipse cx="20" cy="80" rx="22" ry="35" fill="#7ab3d4" opacity="0.2" transform="rotate(30 20 80)"/>
-  <ellipse cx="60" cy="55" rx="40" ry="25" fill="#c5dff5" opacity="0.35" transform="rotate(-35 60 55)"/>
-</svg>
-
-<!-- Bottom-left floral -->
-<svg style="position:fixed;bottom:0;left:0;width:200px;pointer-events:none;z-index:1;opacity:0.5;transform:scaleY(-1)" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-  <ellipse cx="60" cy="60" rx="50" ry="35" fill="#a8cfe8" opacity="0.3" transform="rotate(15 60 60)"/>
-  <circle cx="90" cy="40" r="22" fill="#5b9ec9" opacity="0.15"/>
-  <ellipse cx="30" cy="100" rx="18" ry="28" fill="#2a6496" opacity="0.12"/>
-</svg>
-
-<!-- Bottom-right floral -->
-<svg style="position:fixed;bottom:0;right:0;width:200px;pointer-events:none;z-index:1;opacity:0.5;transform:scale(-1,-1)" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-  <ellipse cx="60" cy="60" rx="50" ry="35" fill="#a8cfe8" opacity="0.3" transform="rotate(15 60 60)"/>
-  <circle cx="90" cy="40" r="22" fill="#5b9ec9" opacity="0.15"/>
-  <ellipse cx="30" cy="100" rx="18" ry="28" fill="#2a6496" opacity="0.12"/>
-</svg>
-
-<!-- ===== COVER ===== -->
+<!-- ===== COVER PAGE ===== -->
 <div id="cover">
-  <div class="cover-card">
+  <!-- Dekorasi SVG floral sudut -->
+  <div class="floral-corner top-left"></div>
+  <div class="floral-corner top-right"></div>
+  <div class="floral-corner bottom-left"></div>
+  <div class="floral-corner bottom-right"></div>
 
-    <!-- Foto pasangan: ganti src dengan URL foto asli -->
+  <!-- Kupu-kupu animasi -->
+  <div class="butterfly b1">🦋</div>
+  <div class="butterfly b2">🦋</div>
+  <div class="butterfly b3">🦋</div>
+
+  <div class="cover-inner">
+    <p class="cover-label">THE WEDDING OF</p>
+
     <div class="cover-photo">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#c5def5"/>
-            <stop offset="100%" stop-color="#f0d8e8"/>
-          </linearGradient>
-        </defs>
-        <rect width="100" height="100" fill="url(#bg1)"/>
-        <!-- Groom -->
-        <circle cx="34" cy="26" r="12" fill="#f5c5a3"/>
-        <rect x="22" y="40" width="20" height="24" rx="6" fill="#2a6496"/>
-        <rect x="31" y="40" width="4" height="10" rx="2" fill="#c9a84c"/>
-        <!-- Bride -->
-        <circle cx="64" cy="26" r="12" fill="#f5c5a3"/>
-        <ellipse cx="64" cy="16" rx="15" ry="7" fill="#7ab3d4" opacity="0.8"/>
-        <rect x="52" y="40" width="22" height="24" rx="6" fill="#f7c3cb"/>
-        <!-- Bouquet -->
-        <circle cx="68" cy="58" r="6"  fill="#f7c3cb"/>
-        <circle cx="74" cy="54" r="5"  fill="#e8a0b0"/>
-        <circle cx="62" cy="56" r="4"  fill="#f0d0d8"/>
-        <circle cx="70" cy="50" r="3"  fill="#c8e0a0"/>
-      </svg>
+      <img src="img/kita.png" alt="Pandu & Rina">
     </div>
 
-    <p class="cover-label">The Wedding Of</p>
-    <h1 class="cover-names script">Farrel & Amelia</h1>
+    <h1 class="cover-names">Pandu <span class="ampersand">&</span> Rina</h1>
     <p class="cover-date">Sabtu, 23 Mei 2026</p>
 
     <div class="guest-box">
@@ -90,201 +39,240 @@
       <strong id="guestName">Tamu Undangan</strong>
     </div>
 
-    <div class="btn-open-wrap">
-      <div class="pulse-ring"></div>
-      <div class="pulse-ring2"></div>
-      <button class="btn-open" onclick="openInvitation()">
-        ✉&nbsp; Buka Undangan
-      </button>
-    </div>
-
+    <button class="btn-open" onclick="openInvitation()">
+      <span class="btn-icon">✉</span> Buka Undangan
+    </button>
   </div>
 </div>
 
 <!-- ===== MAIN CONTENT ===== -->
-<main>
+<main id="main-content">
+
+  <!-- Dekorasi global -->
+  <div class="bg-floral-left"></div>
+  <div class="bg-floral-right"></div>
 
   <!-- 1. Save The Date -->
-  <div class="section-card" id="section-home">
-    <p class="save-label">✦ Save The Date ✦</p>
-    <h1 class="script home-names">Farrel & Amelia</h1>
-    <p class="home-date">Sabtu, 23 Mei 2026</p>
+  <section class="section fade-in" id="sec-home">
+    <div class="section-deco top"></div>
 
-    <div class="gold-divider"><span>❧</span></div>
-
-    <p class="ayat">
-      "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
-      pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung
-      dan merasa tenteram kepadanya."
-    </p>
-    <p class="ayat-src">— QS. Ar-Rum : 21 —</p>
-
-    <div class="countdown-grid">
-      <div class="countdown-box"><span class="num" id="cd-d">--</span><span class="lbl">Hari</span></div>
-      <div class="countdown-box"><span class="num" id="cd-h">--</span><span class="lbl">Jam</span></div>
-      <div class="countdown-box"><span class="num" id="cd-m">--</span><span class="lbl">Menit</span></div>
-      <div class="countdown-box"><span class="num" id="cd-s">--</span><span class="lbl">Detik</span></div>
+    <div class="save-the-date-banner">
+      <span class="std-text">Save The Date</span>
     </div>
-  </div>
+
+    <div class="couple-photo-main">
+      <img src="img/kita.png" alt="Pandu & Rina">
+    </div>
+
+    <h2 class="main-names">Pandu <span class="ampersand">&</span> Rina</h2>
+
+    <div class="divider-ornament"><span>❧</span></div>
+
+    <blockquote class="ayat">
+      "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+      <cite>— QS. Ar-Rum: 21 —</cite>
+    </blockquote>
+
+    <div class="countdown-wrap">
+      <div class="countdown-box">
+        <span class="num" id="cd-d">--</span>
+        <span class="lbl">Hari</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-box">
+        <span class="num" id="cd-h">--</span>
+        <span class="lbl">Jam</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-box">
+        <span class="num" id="cd-m">--</span>
+        <span class="lbl">Menit</span>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-box">
+        <span class="num" id="cd-s">--</span>
+        <span class="lbl">Detik</span>
+      </div>
+    </div>
+  </section>
 
   <!-- 2. Mempelai -->
-  <div class="section-card">
-    <div class="sec-title">
-      <p class="sub-label">Mempelai</p>
-      <h2>The Happy Couple</h2>
+  <section class="section fade-in">
+    <div class="sec-header">
+      <p class="sec-sub">Mempelai</p>
+      <h2 class="sec-title">The Happy Couple</h2>
     </div>
-    <div class="mempelai-grid">
 
+    <div class="mempelai-grid">
       <div class="mempelai-card">
-        <div class="mempelai-photo">
-          <!-- Ganti dengan: <img src="farrel.jpg" alt="Farrel"> -->
+        <div class="mempelai-photo groom-photo">
           <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
             <rect width="60" height="60" rx="30" fill="#c8dff0"/>
             <circle cx="30" cy="19" r="11" fill="#f5c5a3"/>
-            <rect x="16" y="32" width="28" height="22" rx="8" fill="#2a6496"/>
-            <rect x="28" y="32" width="4"  height="10" rx="2" fill="#c9a84c"/>
+            <rect x="16" y="32" width="28" height="22" rx="8" fill="#3b7dbf"/>
+            <rect x="28" y="32" width="4" height="10" rx="2" fill="#c9a84c"/>
           </svg>
         </div>
-        <h3 class="mempelai-name script">Farrel Aulia Irfealdo</h3>
-        <p class="mempelai-parents">Putra Bpk. _______ &<br>Ibu _______</p>
+        <h3 class="mempelai-name">Pandu</h3>
+        <p class="mempelai-full">Pandu Wijaya Pratama</p>
+        <p class="mempelai-parents">Putra dari<br>Bpk. _______ & Ibu _______</p>
+      </div>
+
+      <div class="mempelai-divider">
+        <span class="heart-icon">♡</span>
       </div>
 
       <div class="mempelai-card">
-        <div class="mempelai-photo">
-          <!-- Ganti dengan: <img src="amelia.jpg" alt="Amelia"> -->
+        <div class="mempelai-photo bride-photo">
           <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <rect width="60" height="60" rx="30" fill="#e8d0e8"/>
+            <rect width="60" height="60" rx="30" fill="#f8dce8"/>
             <circle cx="30" cy="19" r="11" fill="#f5c5a3"/>
-            <ellipse cx="30" cy="11" rx="15" ry="7" fill="#7ab3d4" opacity="0.85"/>
+            <ellipse cx="30" cy="12" rx="14" ry="7" fill="#e8a0b0"/>
+            <ellipse cx="30" cy="22" rx="15" ry="6" fill="#e8a0b0"/>
             <rect x="16" y="32" width="28" height="22" rx="8" fill="#f7c3cb"/>
           </svg>
         </div>
-        <h3 class="mempelai-name script">Amelia Sofyan</h3>
-        <p class="mempelai-parents">Putri Bpk. _______ &<br>Ibu _______</p>
+        <h3 class="mempelai-name">Rina</h3>
+        <p class="mempelai-full">Rina Febriyanti</p>
+        <p class="mempelai-parents">Putri dari<br>Bpk. _______ & Ibu _______</p>
       </div>
-
     </div>
-  </div>
+  </section>
 
   <!-- 3. Rangkaian Acara -->
-  <div class="section-card" id="section-acara">
-    <div class="sec-title">
-      <p class="sub-label">Agenda</p>
-      <h2>Rangkaian Acara</h2>
-      <p style="font-size:0.83rem;color:#5a7080;margin-top:4px;font-weight:500;">Sabtu, 23 Mei 2026</p>
+  <section class="section fade-in" id="sec-acara">
+    <div class="sec-header">
+      <p class="sec-sub">Agenda</p>
+      <h2 class="sec-title">Rangkaian Acara</h2>
+      <p class="sec-date-sub">Sabtu, 23 Mei 2026</p>
     </div>
 
-    <div class="acara-item">
-      <div class="acara-icon">🕌</div>
-      <div>
-        <div class="acara-type">Akad</div>
-        <span class="acara-time">09.00 WIB</span>
-        <p class="acara-place">Balai KUA Marpoyan Damai</p>
-        <p class="acara-addr">Jl. Kartama No. Ujung Perhentian Marpoyan, Kec. Marpoyan Damai</p>
+    <div class="acara-list">
+      <div class="acara-card">
+        <div class="acara-badge">09.00 PAGI</div>
+        <div class="acara-content">
+          <h3 class="acara-type">Akad</h3>
+          <p class="acara-place">Balai KUA Marpoyan Damai</p>
+          <p class="acara-addr">Jl. Kartama No. Ujung Perhentian Marpoyan, Kec. Marpoyan Damai</p>
+        </div>
+        <div class="acara-deco">🕌</div>
+      </div>
+
+      <div class="acara-connector">
+        <div class="connector-line"></div>
+      </div>
+
+      <div class="acara-card">
+        <div class="acara-badge">10.00 PAGI</div>
+        <div class="acara-content">
+          <h3 class="acara-type">Resepsi</h3>
+          <p class="acara-place">Kediaman Mempelai Wanita</p>
+          <p class="acara-addr">Jl. Inpres Komp. BSA Blok A No. 30, di belakang Posyandu Kasih Bunda</p>
+        </div>
+        <div class="acara-deco">🎊</div>
       </div>
     </div>
 
-    <div class="acara-item">
-      <div class="acara-icon">🎊</div>
-      <div>
-        <div class="acara-type">Resepsi</div>
-        <span class="acara-time">10.00 WIB</span>
-        <p class="acara-place">Kediaman Mempelai Wanita</p>
-        <p class="acara-addr">Jl. Inpres Komp. BSA Blok A No. 30, di belakang Posyandu Kasih Bunda</p>
-      </div>
-    </div>
-
-    <!-- Peta lokasi -->
-    <div class="map-embed">
+    <div class="map-container">
       <iframe
         src="https://www.google.com/maps?q=0.4602778,101.4246944&output=embed"
         loading="lazy" allowfullscreen>
       </iframe>
     </div>
 
-    <div style="text-align:center;">
-      <a href="https://www.google.com/maps?q=0.4602778,101.4246944" target="_blank" class="maps-btn">
+    <div class="btn-group">
+      <a href="https://www.google.com/maps?q=0.4602778,101.4246944" target="_blank" class="btn-maps">
         📍 Buka di Google Maps
       </a>
-      <br>
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Farrel+%26+Amelia&dates=20260523T020000Z/20260523T070000Z"
-         target="_blank" class="cal-btn">
-        📅 Simpan Tanggal
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Pandu+%26+Rina&dates=20260523T020000Z/20260523T070000Z"
+         target="_blank" class="btn-cal">
+        📅 Simpan ke Kalender
       </a>
     </div>
-  </div>
+  </section>
 
   <!-- 4. Wedding Gift -->
-  <div class="section-card">
-    <div class="sec-title">
-      <p class="sub-label">Hadiah</p>
-      <h2 class="script" style="font-size:2.1rem;">Wedding Gift</h2>
+  <section class="section fade-in">
+    <div class="sec-header">
+      <p class="sec-sub">Hadiah</p>
+      <h2 class="sec-title-script">Wedding Gift</h2>
     </div>
 
     <div class="gift-card">
       <div class="gift-header">
         <span class="gift-bank">DANA</span>
-        <span style="font-size:0.75rem;color:#8aabbb;font-weight:600;">e-Wallet</span>
+        <span class="gift-type-badge">e-Wallet</span>
       </div>
       <div class="gift-number" id="rek0">085194792312</div>
-      <div class="gift-name">a.n Amelia Sofyan</div>
-      <button class="copy-btn" onclick="copyText('rek0', this)">📋 Salin Nomor</button>
+      <div class="gift-name">a.n Rina Febriyanti</div>
+      <button class="btn-copy" onclick="copyText('rek0', this)">
+        📋 Salin Nomor
+      </button>
     </div>
-  </div>
+  </section>
 
-  <!-- 5. RSVP -->
-  <div class="section-card" id="section-rsvp">
-    <div class="sec-title">
-      <p class="sub-label">Konfirmasi</p>
-      <h2 class="script" style="font-size:2.1rem;">RSVP & Ucapan</h2>
+  <!-- 5. RSVP & Ucapan -->
+  <section class="section fade-in" id="sec-rsvp">
+    <div class="sec-header">
+      <p class="sec-sub">Konfirmasi</p>
+      <h2 class="sec-title-script">RSVP & Ucapan</h2>
     </div>
 
-    <div class="form-group">
-      <label>Nama Lengkap</label>
-      <input type="text" id="nama" placeholder="Nama Anda">
+    <div class="form-wrap">
+      <div class="form-group">
+        <label>Nama Lengkap</label>
+        <input type="text" id="nama" placeholder="Nama Anda">
+      </div>
+      <div class="form-group">
+        <label>Kehadiran</label>
+        <select id="hadir">
+          <option value="hadir">✅ Insyaa Allah hadir</option>
+          <option value="tidak">❌ Tidak bisa hadir</option>
+          <option value="ragu">🤔 Belum pasti</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Pesan / Doa</label>
+        <textarea id="ucapan" placeholder="Tulis ucapan..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="submitRSVP()">
+        <span>🟢</span> Kirim via WhatsApp
+      </button>
+      <div id="rsvp-success">✅ Terima kasih atas doa &amp; ucapannya!</div>
     </div>
-    <div class="form-group">
-      <label>Kehadiran</label>
-      <select id="hadir">
-        <option value="hadir">✅ Insyaa Allah hadir</option>
-        <option value="tidak">❌ Tidak bisa hadir</option>
-        <option value="ragu">🤔 Belum pasti</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Doa & Ucapan</label>
-      <textarea id="ucapan" placeholder="Tuliskan doa dan ucapan terbaik Anda..."></textarea>
-    </div>
-    <button class="submit-btn" onclick="submitRSVP()">
-      💌 Kirim Ucapan
-    </button>
-    <div id="rsvp-success">
-      ✅ Terima kasih atas doa & ucapannya!
-    </div>
-  </div>
+  </section>
 
 </main>
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  <h2 class="script footer-names">Farrel & Amelia</h2>
-  <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
-  <p class="salam">Wassalamu'alaikum Wr. Wb.</p>
-  <div class="gold-divider" style="max-width:180px;margin:18px auto;"><span>♡</span></div>
-  <p class="brand">Dibuat dengan ❤️ untuk Farrel & Amelia</p>
+  <div class="footer-floral"></div>
+  <h2 class="footer-names">Pandu <span class="ampersand">&</span> Rina</h2>
+  <p class="footer-msg">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
+  <p class="footer-salam">Wassalamu'alaikum Wr. Wb.</p>
+  <div class="footer-divider"><span>♡</span></div>
+  <p class="footer-brand">Dibuat dengan ❤️ untuk Pandu &amp; Rina</p>
 </footer>
 
 <!-- ===== BOTTOM NAV ===== -->
-<nav class="nav-bar" id="navbar">
-  <a href="#" class="nav-link active" data-section="home">🏠</a>
-  <a href="#section-acara" class="nav-link" data-section="acara">📅</a>
-  <a href="#section-rsvp" class="nav-link" data-section="rsvp">💌</a>
+<nav class="bottom-nav" id="bottom-nav">
+  <a href="#sec-home" class="nav-item active" data-section="home">
+    <span class="nav-icon">🏠</span>
+  </a>
+  <a href="#sec-acara" class="nav-item" data-section="acara">
+    <span class="nav-icon">📅</span>
+  </a>
+  <a href="#" class="nav-item" data-section="gallery">
+    <span class="nav-icon">🖼</span>
+  </a>
+  <a href="#sec-rsvp" class="nav-item" data-section="rsvp">
+    <span class="nav-icon">💌</span>
+  </a>
 </nav>
 
-<!-- ===== MUSIC BTN ===== -->
+<!-- ===== MUSIC BUTTON ===== -->
 <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
 
-<!-- Background music — isi src dengan URL file mp3 -->
 <audio id="bgMusic" loop>
   <!-- <source src="musik.mp3" type="audio/mpeg"> -->
 </audio>

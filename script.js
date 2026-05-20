@@ -1,104 +1,147 @@
 /* =============================================
-   UNDANGAN PERNIKAHAN - Farrel & Amelia
+   UNDANGAN PERNIKAHAN - Pandu & Rina
    script.js
    ============================================= */
 
-// ===== COVER: Nama Tamu dari URL =====
-// Contoh URL: index.html?to=Nama+Tamu
+// ===== NAMA TAMU DARI URL =====
+// Contoh: index.html?to=Nama+Tamu
 const urlParams = new URLSearchParams(window.location.search);
 const guest = urlParams.get('to');
 if (guest) {
-  document.getElementById('guestName').innerText = guest;
-}
-
-// ===== ANIMASI KELOPAK BUNGA (Petal) =====
-const petalColors = ['#a8d4f0', '#c8e8f8', '#f7c3cb', '#f8d9de', '#d4e8c0'];
-const cover = document.getElementById('cover');
-
-for (let i = 0; i < 20; i++) {
-  const p = document.createElement('div');
-  p.className = 'petal';
-  p.style.cssText = `
-    left: ${Math.random() * 100}%;
-    background: ${petalColors[Math.floor(Math.random() * petalColors.length)]};
-    width: ${8 + Math.random() * 10}px;
-    height: ${12 + Math.random() * 14}px;
-    animation-duration: ${4 + Math.random() * 6}s;
-    animation-delay: ${Math.random() * 6}s;
-    border-radius: ${Math.random() > 0.5 ? '50% 0 50% 0' : '0 50% 0 50%'};
-  `;
-  cover.appendChild(p);
+  const el = document.getElementById('guestName');
+  if (el) el.innerText = decodeURIComponent(guest);
 }
 
 // ===== BUKA UNDANGAN =====
 function openInvitation() {
   document.body.classList.add('cover-open');
-  document.getElementById('navbar').classList.add('show');
+
+  const main = document.getElementById('main-content');
+  main.classList.add('show');
+
+  document.getElementById('bottom-nav').classList.add('show');
   document.getElementById('musicBtn').classList.add('show');
-  // Mulai animasi scroll setelah cover selesai
-  setTimeout(() => animateSections(), 800);
+
+  // Scroll ke atas setelah transisi
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    initScrollObserver();
+  }, 900);
 }
 
-// ===== SCROLL ANIMATION (Intersection Observer) =====
-function animateSections() {
-  const cards = document.querySelectorAll('.section-card');
+// ===== SCROLL ANIMATION =====
+function initScrollObserver() {
+  const cards = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
-  cards.forEach(card => observer.observe(card));
+  cards.forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.08) + 's';
+    observer.observe(card);
+  });
 }
 
-// ===== COUNTDOWN HITUNG MUNDUR =====
-// Ganti tanggal sesuai hari H (format: 'YYYY-MM-DDTHH:MM:SS')
+// ===== COUNTDOWN =====
 const weddingDate = new Date('2026-05-23T09:00:00').getTime();
 
 function updateCountdown() {
-  const now = Date.now();
-  const gap = weddingDate - now;
+  const gap = weddingDate - Date.now();
 
   if (gap <= 0) {
     ['cd-d', 'cd-h', 'cd-m', 'cd-s'].forEach(id => {
-      document.getElementById(id).innerText = '0';
+      const el = document.getElementById(id);
+      if (el) el.innerText = '0';
     });
     return;
   }
 
-  document.getElementById('cd-d').innerText = Math.floor(gap / 86400000);
-  document.getElementById('cd-h').innerText = Math.floor((gap % 86400000) / 3600000);
-  document.getElementById('cd-m').innerText = Math.floor((gap % 3600000) / 60000);
-  document.getElementById('cd-s').innerText = Math.floor((gap % 60000) / 1000);
+  const d = Math.floor(gap / 86400000);
+  const h = Math.floor((gap % 86400000) / 3600000);
+  const m = Math.floor((gap % 3600000) / 60000);
+  const s = Math.floor((gap % 60000) / 1000);
+
+  const setVal = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.innerText = String(val).padStart(2, '0');
+  };
+
+  setVal('cd-d', d);
+  setVal('cd-h', h);
+  setVal('cd-m', m);
+  setVal('cd-s', s);
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ===== SALIN NOMOR REKENING =====
+// ===== COPY NOMOR REKENING =====
 function copyText(id, btn) {
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    const orig = btn.innerText;
-    btn.innerText = '✅ Tersalin!';
-    setTimeout(() => btn.innerText = orig, 2000);
-  });
+  const el = document.getElementById(id);
+  if (!el) return;
+  const text = el.innerText.trim();
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      showCopied(btn);
+    }).catch(() => fallbackCopy(text, btn));
+  } else {
+    fallbackCopy(text, btn);
+  }
 }
 
-// ===== KIRIM RSVP =====
+function fallbackCopy(text, btn) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:-999px;opacity:0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); showCopied(btn); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function showCopied(btn) {
+  const orig = btn.innerText;
+  btn.innerText = '✅ Tersalin!';
+  btn.classList.add('copied');
+  setTimeout(() => {
+    btn.innerText = orig;
+    btn.classList.remove('copied');
+  }, 2500);
+}
+
+// ===== RSVP KIRIM VIA WHATSAPP =====
 function submitRSVP() {
-  const nama   = document.getElementById('nama').value.trim();
-  const ucapan = document.getElementById('ucapan').value.trim();
+  const nama   = document.getElementById('nama')?.value.trim();
+  const hadir  = document.getElementById('hadir')?.value;
+  const ucapan = document.getElementById('ucapan')?.value.trim();
 
   if (!nama || !ucapan) {
-    alert('Harap isi nama dan ucapan.');
+    alert('Harap isi nama dan ucapan terlebih dahulu.');
     return;
   }
 
+  const hadirText = hadir === 'hadir' ? 'Insyaa Allah hadir' :
+                    hadir === 'tidak' ? 'Tidak bisa hadir' : 'Belum pasti';
+
+  // Ganti nomor WA berikut dengan nomor mempelai
+  const waNumber = '6285194792312';
+  const msg = encodeURIComponent(
+    `Assalamu'alaikum,\n\nSaya *${nama}* menyampaikan:\n\nKehadiran: ${hadirText}\n\nUcapan/Doa:\n${ucapan}\n\nSemoga pernikahan Pandu & Rina sakinah, mawaddah, warahmah. Aamiin 🌸`
+  );
+
+  window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
+
   document.getElementById('rsvp-success').style.display = 'block';
   document.getElementById('ucapan').value = '';
+
+  setTimeout(() => {
+    document.getElementById('rsvp-success').style.display = 'none';
+  }, 4000);
 }
 
 // ===== MUSIK LATAR =====
@@ -107,36 +150,41 @@ const musicBtn = document.getElementById('musicBtn');
 let isPlaying  = false;
 
 function toggleMusic() {
-  // Pastikan src sudah diisi di <audio> di HTML
-  if (!music.src || music.src === window.location.href) {
-    alert('Tambahkan URL musik pada tag <audio> di index.html');
+  if (!music || !music.src || music.src === window.location.href) {
+    alert('Tambahkan file musik (musik.mp3) dan isi src pada tag <audio> di index.html');
     return;
   }
 
   if (isPlaying) {
     music.pause();
     musicBtn.classList.remove('playing');
+    musicBtn.innerText = '🎵';
   } else {
-    music.play();
+    music.play().catch(e => console.log('Autoplay blocked:', e));
     musicBtn.classList.add('playing');
+    musicBtn.innerText = '🎶';
   }
   isPlaying = !isPlaying;
 }
 
-// ===== NAV ACTIVE STATE =====
+// ===== BOTTOM NAV ACTIVE ===== 
 window.addEventListener('scroll', () => {
-  const sections = document.querySelectorAll('[id^="section-"]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  let current = '';
+  const sections = [
+    { id: 'sec-home',  key: 'home'  },
+    { id: 'sec-acara', key: 'acara' },
+    { id: 'sec-rsvp',  key: 'rsvp'  },
+  ];
+  const navItems = document.querySelectorAll('.nav-item');
+  let current = 'home';
 
-  sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 200) {
-      current = section.id.replace('section-', '');
+  sections.forEach(({ id, key }) => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 200) {
+      current = key;
     }
   });
 
-  navLinks.forEach(link => {
-    const isHome = current === '' && link.dataset.section === 'home';
-    link.classList.toggle('active', link.dataset.section === current || isHome);
+  navItems.forEach(item => {
+    item.classList.toggle('active', item.dataset.section === current);
   });
-});
+}, { passive: true });
