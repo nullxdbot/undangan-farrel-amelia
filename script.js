@@ -206,7 +206,13 @@ function toggleMusic() {
   isPlaying = !isPlaying;
 }
 
-// ===== BOTTOM NAV ACTIVE ===== 
+// ===== NAVIGASI TANPA HASH =====
+function navScroll(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ===== BOTTOM NAV ACTIVE =====
 window.addEventListener('scroll', () => {
   const sections = [
     { id: 'sec-home',  key: 'home'  },
