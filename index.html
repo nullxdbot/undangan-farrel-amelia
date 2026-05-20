@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="Undangan Pernikahan Farrel & Amelia">
+  <title>The Wedding of Farrel & Amelia</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Background -->
+<div class="page-bg"></div>
+
+<!-- ===== COVER ===== -->
+<div id="cover">
+  <div class="cover-card">
+
+    <!-- Ilustrasi Pasangan (bisa diganti <img src="foto.jpg">) -->
+    <div class="cover-photo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <!-- Groom -->
+        <circle cx="36" cy="28" r="13" fill="#f5c5a3"/>
+        <rect x="24" y="44" width="22" height="28" rx="6" fill="#c9a84c"/>
+        <rect x="26" y="44" width="6" height="14" rx="3" fill="#a08030"/>
+        <!-- Bride -->
+        <circle cx="64" cy="28" r="13" fill="#f5c5a3"/>
+        <ellipse cx="64" cy="18" rx="16" ry="8" fill="#7ab3d4" opacity="0.7"/>
+        <rect x="52" y="44" width="22" height="28" rx="6" fill="#f7c3cb"/>
+        <!-- Bouquet -->
+        <circle cx="68" cy="62" r="7" fill="#f7c3cb"/>
+        <circle cx="74" cy="58" r="5" fill="#e8a0b0"/>
+        <circle cx="62" cy="60" r="5" fill="#f5d0d8"/>
+        <circle cx="70" cy="55" r="4" fill="#d4e8a0"/>
+      </svg>
+    </div>
+
+    <p class="cover-label">The Wedding Of</p>
+    <h1 class="cover-names script">Farrel & Amelia</h1>
+    <p class="cover-date">Sabtu, 23 Mei 2026</p>
+
+    <div class="guest-box">
+      <small>Kepada Yth.</small>
+      <strong id="guestName">Tamu Undangan</strong>
+    </div>
+
+    <div style="position:relative; display:inline-block;">
+      <div class="pulse-ring"></div>
+      <button class="btn-open" onclick="openInvitation()">
+        ✉ Buka Undangan
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main>
+
+  <!-- Save The Date -->
+  <div class="section-card" id="section-home">
+    <p class="save-label">Save The Date</p>
+    <h1 class="script" style="font-size:3.5rem; line-height:1; margin-bottom:4px;">Farrel & Amelia</h1>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:600; color:var(--text); margin:10px 0 20px; letter-spacing:1px;">
+      Sabtu, 23 Mei 2026
+    </p>
+
+    <div class="gold-divider"><span>✦</span></div>
+
+    <p class="ayat">
+      "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu
+      dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya."
+    </p>
+    <p class="ayat-source">— QS. Ar-Rum: 21 —</p>
+
+    <!-- Countdown -->
+    <div class="countdown-grid">
+      <div class="countdown-box"><div class="num" id="cd-d">--</div><div class="lbl">Hari</div></div>
+      <div class="countdown-box"><div class="num" id="cd-h">--</div><div class="lbl">Jam</div></div>
+      <div class="countdown-box"><div class="num" id="cd-m">--</div><div class="lbl">Menit</div></div>
+      <div class="countdown-box"><div class="num" id="cd-s">--</div><div class="lbl">Detik</div></div>
+    </div>
+  </div>
+
+  <!-- Mempelai -->
+  <div class="section-card">
+    <div class="sec-title">
+      <p class="sub">Mempelai</p>
+      <h2>The Happy Couple</h2>
+    </div>
+    <div class="mempelai-grid">
+
+      <!-- Mempelai Pria -->
+      <div class="mempelai-card">
+        <div class="mempelai-photo">
+          <!-- Ganti dengan: <img src="foto-farrel.jpg" alt="Farrel"> -->
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="18" r="12" fill="#f5c5a3"/>
+            <rect x="16" y="32" width="28" height="22" rx="8" fill="#c9a84c"/>
+            <rect x="19" y="32" width="8" height="12" rx="4" fill="#a08030"/>
+          </svg>
+        </div>
+        <h3 class="mempelai-name script">Farrel Aulia Irfealdo</h3>
+        <p class="mempelai-parents">Putra Bpk. ______ &<br>Ibu ______</p>
+      </div>
+
+      <!-- Mempelai Wanita -->
+      <div class="mempelai-card">
+        <div class="mempelai-photo">
+          <!-- Ganti dengan: <img src="foto-amelia.jpg" alt="Amelia"> -->
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="18" r="12" fill="#f5c5a3"/>
+            <ellipse cx="30" cy="10" rx="16" ry="7" fill="#7ab3d4" opacity="0.7"/>
+            <rect x="16" y="32" width="28" height="22" rx="8" fill="#f7c3cb"/>
+          </svg>
+        </div>
+        <h3 class="mempelai-name script">Amelia Sofyan</h3>
+        <p class="mempelai-parents">Putri Bpk. ______ &<br>Ibu ______</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Rangkaian Acara -->
+  <div class="section-card" id="section-acara">
+    <div class="sec-title">
+      <p class="sub">Agenda</p>
+      <h2>Rangkaian Acara</h2>
+      <p style="font-size:0.85rem; color:#7a8a9a; font-weight:500; margin-top:4px;">Sabtu, 23 Mei 2026</p>
+    </div>
+
+    <div class="acara-item">
+      <div class="acara-icon">🕌</div>
+      <div>
+        <div class="acara-type">Akad</div>
+        <span class="acara-time">09.00 WIB</span>
+        <p class="acara-place">Balai KUA Marpoyan Damai</p>
+        <p class="acara-addr">Jl. Kartama No. Ujung Perhentian Marpoyan, Kec. Marpoyan Damai</p>
+      </div>
+    </div>
+
+    <div class="acara-item">
+      <div class="acara-icon">🎊</div>
+      <div>
+        <div class="acara-type">Resepsi</div>
+        <span class="acara-time">10.00 WIB</span>
+        <p class="acara-place">Kediaman Mempelai Wanita</p>
+        <p class="acara-addr">Jl. Inpres Komp. BSA Blok A No. 30, di belakang Posyandu Kasih Bunda</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="https://www.google.com/maps?q=0.4602778,101.4246944" target="_blank" class="maps-btn">
+        📍 Buka di Google Maps
+      </a>
+      <br>
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Farrel+%26+Amelia&dates=20260523T020000Z/20260523T070000Z"
+         target="_blank" class="cal-btn">
+        📅 Simpan Tanggal
+      </a>
+    </div>
+  </div>
+
+  <!-- Wedding Gift -->
+  <div class="section-card">
+    <div class="sec-title">
+      <p class="sub">Hadiah</p>
+      <h2 class="script" style="font-size:2.2rem;">Wedding Gift</h2>
+    </div>
+    <div class="gift-card">
+      <div class="gift-header">
+        <span class="gift-bank">DANA</span>
+        <span style="font-size:0.75rem; color:#888;">e-Wallet</span>
+      </div>
+      <div class="gift-number" id="rek0">085194792312</div>
+      <div class="gift-name">a.n Amelia Sofyan</div>
+      <button class="copy-btn" onclick="copyText('rek0', this)">Salin Nomor</button>
+    </div>
+  </div>
+
+  <!-- RSVP & Ucapan -->
+  <div class="section-card" id="section-rsvp">
+    <div class="sec-title">
+      <p class="sub">Konfirmasi</p>
+      <h2 class="script" style="font-size:2.2rem;">RSVP & Ucapan</h2>
+    </div>
+
+    <div class="form-group">
+      <label>Nama Lengkap</label>
+      <input type="text" id="nama" placeholder="Nama Anda">
+    </div>
+    <div class="form-group">
+      <label>Kehadiran</label>
+      <select id="hadir">
+        <option value="hadir">✅ Insyaa Allah hadir</option>
+        <option value="tidak">❌ Tidak bisa hadir</option>
+        <option value="ragu">🤔 Belum pasti</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Doa & Ucapan</label>
+      <textarea id="ucapan" placeholder="Tuliskan doa dan ucapan terbaik Anda..."></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitRSVP()">
+      💌 Kirim Ucapan
+    </button>
+    <div id="rsvp-success" style="display:none; text-align:center; margin-top:16px; color:#2a8a4a; font-weight:600; font-size:0.9rem;">
+      ✅ Terima kasih atas doa & ucapannya!
+    </div>
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <h2 class="footer-names script">Farrel & Amelia</h2>
+  <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
+  <p class="salam">Wassalamu'alaikum Wr. Wb.</p>
+  <div class="gold-divider" style="margin:20px auto; max-width:200px;"><span>♡</span></div>
+  <p class="brand">Dibuat dengan ❤️ untuk Farrel & Amelia</p>
+</footer>
+
+<!-- ===== BOTTOM NAVIGATION ===== -->
+<nav class="nav-bar" id="navbar">
+  <a href="#" class="nav-link active" data-section="home">🏠</a>
+  <a href="#section-acara" class="nav-link" data-section="acara">📅</a>
+  <a href="#section-rsvp" class="nav-link" data-section="rsvp">💌</a>
+</nav>
+
+<!-- ===== TOMBOL MUSIK ===== -->
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+
+<!-- Background Music — ganti URL dengan file musik Anda -->
+<audio id="bgMusic" loop>
+  <!-- <source src="musik.mp3" type="audio/mpeg"> -->
+</audio>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
