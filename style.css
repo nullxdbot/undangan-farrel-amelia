@@ -332,6 +332,7 @@ body {
 .cover-open #cover {
   transform: translateY(-100%);
   opacity: 0;
+  pointer-events: none;
 }
 
 /* ===== MAIN CONTENT ===== */

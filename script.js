@@ -13,7 +13,7 @@ if (guest) {
 }
 
 // ===== BUKA UNDANGAN =====
-function openInvitation() {
+function openInvitation(scrollTarget) {
   document.body.classList.add('cover-open');
 
   const main = document.getElementById('main-content');
@@ -27,16 +27,50 @@ function openInvitation() {
     music.play().then(() => {
       isPlaying = true;
       musicBtn.classList.add('playing');
-      musicBtn.innerText = '🎶';
+      musicBtn.querySelector('.music-icon').innerText = '🎶';
     }).catch(e => console.log('Autoplay blocked:', e));
   }, 1000);
 
-  // Scroll ke atas setelah transisi
+  // Scroll ke section target atau ke atas
   setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
     initScrollObserver();
-  }, 900);
+    if (scrollTarget) {
+      const el = document.getElementById(scrollTarget);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, 1000);
 }
+
+// ===== AUTO-OPEN JIKA ADA HASH DI URL =====
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#', '');
+  const validSections = ['sec-home', 'sec-acara', 'sec-rsvp'];
+  if (hash && validSections.includes(hash)) {
+    // Matikan transisi cover supaya langsung hilang tanpa animasi
+    const cover = document.getElementById('cover');
+    cover.style.transition = 'none';
+
+    document.body.classList.add('cover-open');
+
+    const main = document.getElementById('main-content');
+    main.classList.add('show');
+    document.getElementById('bottom-nav').classList.add('show');
+    document.getElementById('musicBtn').classList.add('show');
+
+    // Tunggu DOM render konten dulu, baru scroll
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        initScrollObserver();
+        const el = document.getElementById(hash);
+        if (el) el.scrollIntoView({ behavior: 'instant' });
+      });
+    });
+  }
+});
 
 // ===== SCROLL ANIMATION =====
 function initScrollObserver() {
@@ -159,14 +193,15 @@ const musicBtn = document.getElementById('musicBtn');
 let isPlaying  = false;
 
 function toggleMusic() {
+  const icon = musicBtn.querySelector('.music-icon') || musicBtn;
   if (isPlaying) {
     music.pause();
     musicBtn.classList.remove('playing');
-    musicBtn.innerText = '🎵';
+    icon.innerText = '🎵';
   } else {
     music.play().catch(e => console.log('Autoplay blocked:', e));
     musicBtn.classList.add('playing');
-    musicBtn.innerText = '🎶';
+    icon.innerText = '🎶';
   }
   isPlaying = !isPlaying;
 }
