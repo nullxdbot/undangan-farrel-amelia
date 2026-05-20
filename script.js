@@ -1,5 +1,5 @@
 /* =============================================
-   UNDANGAN PERNIKAHAN - Pandu & Rina
+   UNDANGAN PERNIKAHAN - Farrel & Amelia
    script.js
    ============================================= */
 
@@ -131,7 +131,7 @@ function submitRSVP() {
   // Ganti nomor WA berikut dengan nomor mempelai
   const waNumber = '6285194792312';
   const msg = encodeURIComponent(
-    `Assalamu'alaikum,\n\nSaya *${nama}* menyampaikan:\n\nKehadiran: ${hadirText}\n\nUcapan/Doa:\n${ucapan}\n\nSemoga pernikahan Pandu & Rina sakinah, mawaddah, warahmah. Aamiin 🌸`
+    `Assalamu'alaikum,\n\nSaya *${nama}* menyampaikan:\n\nKehadiran: ${hadirText}\n\nUcapan/Doa:\n${ucapan}\n\nSemoga pernikahan Farrel & Amelia sakinah, mawaddah, warahmah. Aamiin 🌸`
   );
 
   window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
