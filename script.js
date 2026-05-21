@@ -172,7 +172,7 @@ function submitRSVP() {
                     hadir === 'tidak' ? 'Tidak bisa hadir' : 'Belum pasti';
 
   // Ganti nomor WA berikut dengan nomor mempelai
-  const waNumber = '6285855004380';
+  const waNumber = '6282298463886';
   const msg = encodeURIComponent(
     `Assalamu'alaikum,\n\nSaya *${nama}* menyampaikan:\n\nKehadiran: ${hadirText}\n\nUcapan/Doa:\n${ucapan}\n\nSemoga pernikahan Farrel & Amelia sakinah, mawaddah, warahmah. Aamiin 🌸`
   );
