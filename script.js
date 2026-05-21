@@ -90,7 +90,7 @@ function initScrollObserver() {
 }
 
 // ===== COUNTDOWN =====
-const weddingDate = new Date('2026-05-23T09:00:00').getTime();
+const weddingDate = new Date('2029-09-29T09:00:00').getTime();
 
 function updateCountdown() {
   const gap = weddingDate - Date.now();
