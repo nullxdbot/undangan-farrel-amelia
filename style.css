@@ -1226,10 +1226,16 @@ footer::before {
 }
 
 .adab-icon {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  display: block;
-  filter: drop-shadow(0 2px 8px rgba(122,184,232,0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.adab-icon svg {
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 2px 8px rgba(122,184,232,0.25));
 }
 
 .adab-item p {
