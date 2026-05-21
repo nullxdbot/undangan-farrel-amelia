@@ -1193,3 +1193,56 @@ footer::before {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(37,99,184,0.08) 0%, transparent 70%);
 }
+
+/* ===== ADAB GRID ===== */
+.adab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.adab-item {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 18px 14px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.adab-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--blue-mist), transparent);
+}
+
+.adab-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px var(--shadow-blue);
+}
+
+.adab-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(122,184,232,0.3));
+}
+
+.adab-item p {
+  font-size: 0.75rem;
+  color: var(--text-soft);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.adab-ref {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--gold);
+  margin-top: 4px;
+  font-style: italic;
+}
