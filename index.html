@@ -352,17 +352,121 @@
       <p style="font-size:0.78rem;color:var(--text-soft);margin-top:4px;line-height:1.6;max-width:280px;margin:4px auto 0">Doa restu Anda adalah karunia terbesar bagi kami. Namun jika ingin memberi, Anda dapat mengirimkan hadiah secara cashless.</p>
       <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
-    <div class="gift-card">
-      <div class="gift-glow"></div>
-      <div class="gift-header">
-        <span class="gift-bank">DANA</span>
-        <span class="gift-badge">e-Wallet</span>
+
+    <!-- Tab Switcher -->
+    <div class="gift-tabs">
+      <button class="gift-tab active" onclick="switchGiftTab('ewallet', this)">e-Wallet</button>
+      <button class="gift-tab" onclick="switchGiftTab('bank', this)">Bank</button>
+      <button class="gift-tab" onclick="switchGiftTab('qris', this)">QRIS</button>
+    </div>
+
+    <!-- e-Wallet Tab -->
+    <div class="gift-tab-content" id="tab-ewallet">
+      <!-- DANA -->
+      <div class="gift-card">
+        <div class="gift-glow"></div>
+        <div class="gift-header">
+          <div class="gift-bank-wrap">
+            <img src="pict/DANA_icon.webp" class="gift-icon" alt="DANA">
+            <span class="gift-bank">DANA</span>
+          </div>
+          <span class="gift-badge">e-Wallet</span>
+        </div>
+        <div class="gift-number" id="rek-dana">082298463886</div>
+        <div class="gift-name">a.n Farrel Aulia Irfealdo</div>
+        <button class="btn-copy" onclick="copyText('rek-dana', this)">📋 Salin Nomor</button>
       </div>
-      <div class="gift-number" id="rek0">082298463886</div>
-      <div class="gift-name">a.n Farrel Aulia Irfealdo</div>
-      <button class="btn-copy" onclick="copyText('rek0', this)">📋 Salin Nomor</button>
+      <!-- GoPay -->
+      <div class="gift-card" style="margin-top:12px">
+        <div class="gift-glow"></div>
+        <div class="gift-header">
+          <div class="gift-bank-wrap">
+            <img src="pict/GoPay_icon.webp" class="gift-icon" alt="GoPay">
+            <span class="gift-bank">GoPay</span>
+          </div>
+          <span class="gift-badge">e-Wallet</span>
+        </div>
+        <div class="gift-number" id="rek-gopay">082298463886</div>
+        <div class="gift-name">a.n Farrel Aulia Irfealdo</div>
+        <button class="btn-copy" onclick="copyText('rek-gopay', this)">📋 Salin Nomor</button>
+      </div>
+      <!-- ShopeePay -->
+      <div class="gift-card" style="margin-top:12px">
+        <div class="gift-glow"></div>
+        <div class="gift-header">
+          <div class="gift-bank-wrap">
+            <img src="pict/ShopeePay_icon.webp" class="gift-icon" alt="ShopeePay">
+            <span class="gift-bank">ShopeePay</span>
+          </div>
+          <span class="gift-badge">e-Wallet</span>
+        </div>
+        <div class="gift-number" id="rek-shopeepay">082298463886</div>
+        <div class="gift-name">a.n Farrel Aulia Irfealdo</div>
+        <button class="btn-copy" onclick="copyText('rek-shopeepay', this)">📋 Salin Nomor</button>
+      </div>
+      <!-- SeaBank -->
+      <div class="gift-card" style="margin-top:12px">
+        <div class="gift-glow"></div>
+        <div class="gift-header">
+          <div class="gift-bank-wrap">
+            <img src="pict/SeaBank_icon.webp" class="gift-icon" alt="SeaBank">
+            <span class="gift-bank">SeaBank</span>
+          </div>
+          <span class="gift-badge">e-Wallet</span>
+        </div>
+        <div class="gift-number" id="rek-seabank">082298463886</div>
+        <div class="gift-name">a.n Farrel Aulia Irfealdo</div>
+        <button class="btn-copy" onclick="copyText('rek-seabank', this)">📋 Salin Nomor</button>
+      </div>
+    </div>
+
+    <!-- Bank Tab -->
+    <div class="gift-tab-content" id="tab-bank" style="display:none">
+      <div class="gift-card">
+        <div class="gift-glow"></div>
+        <div class="gift-header">
+          <div class="gift-bank-wrap">
+            <img src="pict/BNI_icon.webp" class="gift-icon" alt="BNI">
+            <span class="gift-bank">BNI</span>
+          </div>
+          <span class="gift-badge">Bank</span>
+        </div>
+        <div class="gift-number" id="rek-bni">1234567890</div>
+        <div class="gift-name">a.n Farrel Aulia Irfealdo</div>
+        <button class="btn-copy" onclick="copyText('rek-bni', this)">📋 Salin Nomor</button>
+      </div>
+    </div>
+
+    <!-- QRIS Tab -->
+    <div class="gift-tab-content" id="tab-qris" style="display:none">
+      <div class="gift-card gift-qris-card">
+        <div class="gift-glow"></div>
+        <div class="gift-header">
+          <span class="gift-bank">QRIS</span>
+          <span class="gift-badge">Scan & Pay</span>
+        </div>
+        <p style="font-size:0.72rem;color:var(--text-soft);margin-bottom:14px;text-align:center">Scan kode QRIS di bawah menggunakan aplikasi e-wallet atau mobile banking apapun.</p>
+        <div class="qris-img-wrap">
+          <img src="pict/qris.jpg" alt="QRIS Farrel & Amelia" class="qris-img" onclick="openQrisModal()">
+          <div class="qris-overlay" onclick="openQrisModal()">
+            <span>🔍 Tap untuk perbesar</span>
+          </div>
+        </div>
+        <p class="qris-name">a.n Farrel Aulia Irfealdo</p>
+        <button class="btn-copy" onclick="openQrisModal()" style="margin-top:12px">🔍 Lihat QRIS Lebih Besar</button>
+      </div>
     </div>
   </section>
+
+  <!-- QRIS Modal -->
+  <div id="qris-modal" onclick="closeQrisModal()">
+    <div class="qris-modal-inner" onclick="event.stopPropagation()">
+      <button class="qris-modal-close" onclick="closeQrisModal()">✕</button>
+      <p class="qris-modal-label">Scan dengan e-wallet / m-banking</p>
+      <img src="pict/qris.jpg" alt="QRIS" class="qris-modal-img">
+      <p class="qris-modal-name">a.n Farrel Aulia Irfealdo</p>
+    </div>
+  </div>
 
   <!-- Section 7: RSVP & Ucapan -->
   <section class="section fade-in" id="sec-rsvp">
@@ -439,6 +543,26 @@
    INLINE SCRIPT — Amplop, Petals, Ucapan Lokal
    (Semua konflik sudah dihapus & disatukan)
    ============================================= */
+
+// ===== GIFT TABS =====
+function switchGiftTab(tab, btn) {
+  document.querySelectorAll('.gift-tab-content').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.gift-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tab).style.display = 'block';
+  btn.classList.add('active');
+}
+
+// ===== QRIS MODAL =====
+function openQrisModal() {
+  const modal = document.getElementById('qris-modal');
+  modal.style.display = 'flex';
+  requestAnimationFrame(() => requestAnimationFrame(() => modal.classList.add('show')));
+}
+function closeQrisModal() {
+  const modal = document.getElementById('qris-modal');
+  modal.classList.remove('show');
+  setTimeout(() => { modal.style.display = 'none'; }, 300);
+}
 
 // ===== LOADING SCREEN =====
 window.addEventListener('load', () => {
