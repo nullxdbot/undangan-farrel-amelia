@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8">
 
-  <!-- Open Graph (WhatsApp, Facebook, Telegram, dll) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="The Wedding of Farrel &amp; Amelia">
   <meta property="og:description" content="Minggu, 29 September 2029 — Kami mengundang Anda untuk hadir dan memberikan doa restu di hari bahagia kami.">
   <meta property="og:image" content="https://undangan.nullxd.my.id/img/thumbnail.jpg">
-  <meta property="og:image:width" content="800">
-  <meta property="og:image:height" content="800">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://undangan.nullxd.my.id/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="id_ID">
   <meta property="og:site_name" content="Undangan Pernikahan Farrel &amp; Amelia">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The Wedding of Farrel &amp; Amelia">
   <meta name="twitter:description" content="Minggu, 29 September 2029 — Kami mengundang Anda untuk hadir dan memberikan doa restu.">
   <meta name="twitter:image" content="https://undangan.nullxd.my.id/img/thumbnail.jpg">
-
-  <!-- General SEO -->
   <meta name="description" content="Undangan Pernikahan Farrel &amp; Amelia — Minggu, 29 September 2029">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>The Wedding of Farrel & Amelia</title>
@@ -31,9 +27,63 @@
 </head>
 <body>
 
-<!-- COVER -->
+<!-- ===== LOADING SCREEN ===== -->
+<div id="loading-screen">
+  <div class="loading-inner">
+    <div class="loading-ring">
+      <div class="loading-ring-inner"></div>
+    </div>
+    <div class="loading-ornament">
+      <span class="orn-line"></span>
+      <span class="orn-diamond">◆</span>
+      <span class="orn-line"></span>
+    </div>
+    <h2 class="loading-names">Farrel <span>&</span> Amelia</h2>
+    <p class="loading-label">Menyiapkan undangan...</p>
+    <div class="loading-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PETAL CANVAS ===== -->
+<canvas id="petalCanvas"></canvas>
+
+<!-- ===== AMPLOP OVERLAY ===== -->
+<div id="envelope-overlay">
+  <div class="envelope-wrap">
+    <div class="envelope" id="envelope">
+      <!-- Amplop body -->
+      <div class="env-body">
+        <div class="env-flap" id="env-flap"></div>
+        <div class="env-front">
+          <div class="env-seal" id="env-seal">
+            <span class="env-seal-icon">💌</span>
+          </div>
+          <p class="env-to">Kepada Yth.</p>
+          <p class="env-name" id="env-guest-name">Tamu Undangan</p>
+          <p class="env-hint">Ketuk untuk membuka</p>
+        </div>
+      </div>
+      <!-- Surat yang keluar -->
+      <div class="env-letter" id="env-letter">
+        <div class="env-letter-inner">
+          <div class="orn-line-wrap"><span class="orn-line"></span><span class="orn-diamond">◆</span><span class="orn-line"></span></div>
+          <p class="env-letter-label">— The Wedding of —</p>
+          <h2 class="env-letter-names">Farrel <span>&</span> Amelia</h2>
+          <p class="env-letter-date">Minggu · 29 September 2029</p>
+          <div class="orn-line-wrap"><span class="orn-line"></span><span class="orn-diamond">◆</span><span class="orn-line"></span></div>
+          <button class="btn-open-letter" onclick="openFromEnvelope()">
+            <span>✦</span> Buka Undangan
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COVER ===== -->
 <div id="cover">
-  <!-- Floral SVG corners -->
   <div class="cover-floral-tl">
     <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M5 5 Q30 5 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
@@ -82,46 +132,38 @@
   </div>
 
   <div class="cover-border"></div>
-
   <div class="cover-inner">
     <div class="cover-top-ornament">
       <span class="orn-line"></span>
       <span class="orn-diamond">◆</span>
       <span class="orn-line"></span>
     </div>
-
     <p class="cover-label">— The Wedding of —</p>
-
     <div class="cover-photo-wrap">
       <div class="cover-photo-ring"></div>
       <div class="cover-photo">
         <img src="img/kita.jpg" alt="Farrel & Amelia">
       </div>
     </div>
-
     <h1 class="cover-names">
-      <span class="name-part">Farrel</span>
+      <span>Farrel</span>
       <span class="cover-amp">&</span>
-      <span class="name-part">Amelia</span>
+      <span>Amelia</span>
     </h1>
-
     <p class="cover-date">
       <span>Minggu</span>
       <span class="sep">·</span>
       <span>29 September 2029</span>
     </p>
-
     <div class="guest-box">
       <small>Kepada Yth.</small>
       <strong id="guestName">Tamu Undangan</strong>
     </div>
-
-    <button class="btn-open" onclick="openInvitation()">
-      <span class="btn-star">✦</span>
+    <button class="btn-open" onclick="showEnvelope()">
+      <span class="btn-star">💌</span>
       <span>Buka Undangan</span>
       <span class="btn-shimmer"></span>
     </button>
-
     <div class="cover-bottom-ornament">
       <span class="orn-line"></span>
       <span class="orn-diamond">◆</span>
@@ -130,66 +172,43 @@
   </div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- ===== MAIN CONTENT ===== -->
 <main id="main-content">
 
-  <!-- Section 1: Hero / Save The Date -->
+  <!-- Section 1: Hero -->
   <section class="section fade-in" id="sec-home">
     <div style="text-align:center">
       <div class="hero-badge">Save The Date</div>
-
       <div class="hero-photo-wrap">
         <div class="hero-photo-glow"></div>
         <div class="hero-photo">
           <img src="img/kita.jpg" alt="Farrel & Amelia">
         </div>
       </div>
-
-      <h2 class="hero-names">
-        Farrel <span class="gold-amp">&</span> Amelia
-      </h2>
-
-      <div class="ornament-divider">
-        <span></span><i>✦</i><span></span>
-      </div>
-
+      <h2 class="hero-names">Farrel <span class="gold-amp">&</span> Amelia</h2>
+      <div class="ornament-divider"><span></span><i>✦</i><span></span></div>
       <blockquote class="ayat">
         <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
         <cite>— QS. Ar-Rum: 21 —</cite>
       </blockquote>
-
       <div class="countdown-wrap">
-        <div class="countdown-box">
-          <span class="num" id="cd-d">--</span>
-          <span class="lbl">Hari</span>
-        </div>
+        <div class="countdown-box"><span class="num" id="cd-d">--</span><span class="lbl">Hari</span></div>
         <div class="countdown-sep">:</div>
-        <div class="countdown-box">
-          <span class="num" id="cd-h">--</span>
-          <span class="lbl">Jam</span>
-        </div>
+        <div class="countdown-box"><span class="num" id="cd-h">--</span><span class="lbl">Jam</span></div>
         <div class="countdown-sep">:</div>
-        <div class="countdown-box">
-          <span class="num" id="cd-m">--</span>
-          <span class="lbl">Menit</span>
-        </div>
+        <div class="countdown-box"><span class="num" id="cd-m">--</span><span class="lbl">Menit</span></div>
         <div class="countdown-sep">:</div>
-        <div class="countdown-box">
-          <span class="num" id="cd-s">--</span>
-          <span class="lbl">Detik</span>
-        </div>
+        <div class="countdown-box"><span class="num" id="cd-s">--</span><span class="lbl">Detik</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Bismillah / Pembuka -->
+  <!-- Section 2: Bismillah -->
   <section class="section fade-in bismillah-section">
     <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     <p class="bismillah-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
     <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
-    <p class="bismillah-text">
-      Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, semoga ridho-Mu senantiasa tercurah mengiringi pernikahan kami.
-    </p>
+    <p class="bismillah-text">Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, semoga ridho-Mu senantiasa tercurah mengiringi pernikahan kami.</p>
     <div class="ornament-divider sm"><span></span><i>◆</i><span></span></div>
     <p class="bismillah-greeting">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
   </section>
@@ -201,7 +220,6 @@
       <h2 class="sec-title">The Happy Couple</h2>
       <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
-
     <div class="mempelai-grid">
       <div class="mempelai-card">
         <div class="mempelai-photo">
@@ -211,11 +229,9 @@
         <p class="mempelai-full">Farrel Aulia Irfealdo</p>
         <p class="mempelai-parents">Putra dari<br>Bpk. _______ &<br>Ibu _______</p>
       </div>
-
       <div class="mempelai-center">
         <div class="heart-pulse">♡</div>
       </div>
-
       <div class="mempelai-card">
         <div class="mempelai-photo">
           <img src="img/amelia.jpg" alt="Amelia">
@@ -235,7 +251,6 @@
       <p class="sec-date-label">Minggu, 29 September 2029</p>
       <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
-
     <div class="acara-timeline">
       <div class="acara-item">
         <div class="acara-time-col">
@@ -249,7 +264,6 @@
           <p class="acara-addr">Jl. Arjuno No. 7, Ngoro, Kabupaten Jombang, Jawa Timur 61473</p>
         </div>
       </div>
-
       <div class="acara-item">
         <div class="acara-time-col">
           <div class="acara-time-badge">10.00</div>
@@ -263,21 +277,43 @@
       </div>
     </div>
 
-    <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps?q=Jl.+Supriadi+No.10,+Pandean,+Ngoro,+Kabupaten+Jombang,+Jawa+Timur+61473&output=embed"
-        loading="lazy" allowfullscreen>
-      </iframe>
-    </div>
-
-    <div class="btn-group">
-      <a href="https://maps.app.goo.gl/5HnwZTHVGHnphqn79" target="_blank" class="btn-outline">
-        📍 Google Maps
-      </a>
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Farrel+%26+Amelia&dates=20290929T020000Z/20290929T070000Z"
-         target="_blank" class="btn-solid">
-        📅 Simpan Kalender
-      </a>
+    <!-- Denah Lokasi -->
+    <div class="denah-section">
+      <div class="denah-header">
+        <span class="denah-icon">🗺️</span>
+        <span class="denah-title">Denah & Cara ke Lokasi</span>
+      </div>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps?q=Jl.+Supriadi+No.10,+Pandean,+Ngoro,+Kabupaten+Jombang,+Jawa+Timur+61473&output=embed" loading="lazy" allowfullscreen></iframe>
+      </div>
+      <!-- Rute singkat -->
+      <div class="rute-list">
+        <div class="rute-item">
+          <div class="rute-dot">🚗</div>
+          <div class="rute-text">
+            <strong>Dari Surabaya</strong>
+            <p>Tol Surabaya-Mojokerto → keluar Mojokerto → arah Ngoro ±45 menit</p>
+          </div>
+        </div>
+        <div class="rute-item">
+          <div class="rute-dot">🚌</div>
+          <div class="rute-text">
+            <strong>Angkutan Umum</strong>
+            <p>Terminal Mojokerto → angkot jurusan Ngoro → turun di Pasar Ngoro</p>
+          </div>
+        </div>
+        <div class="rute-item">
+          <div class="rute-dot">🛵</div>
+          <div class="rute-text">
+            <strong>Ojek Online</strong>
+            <p>Tersedia Gojek/Grab dari pusat kota Mojokerto ke lokasi</p>
+          </div>
+        </div>
+      </div>
+      <div class="btn-group" style="margin-top:14px">
+        <a href="https://maps.app.goo.gl/5HnwZTHVGHnphqn79" target="_blank" class="btn-outline">📍 Google Maps</a>
+        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+Farrel+%26+Amelia&dates=20290929T020000Z/20290929T070000Z" target="_blank" class="btn-solid">📅 Simpan Kalender</a>
+      </div>
     </div>
   </section>
 
@@ -288,7 +324,6 @@
       <h2 class="sec-title-script">Adab Menghadiri Walimah</h2>
       <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
-
     <div class="adab-grid">
       <div class="adab-item">
         <div class="adab-icon">🕌</div>
@@ -314,10 +349,9 @@
     <div class="sec-header">
       <p class="sec-eyebrow">Hadiah</p>
       <h2 class="sec-title-script">Wedding Gift</h2>
-      <p style="font-size:0.78rem;color:var(--text-soft);margin-top:4px;line-height:1.6;max-width:280px;margin-left:auto;margin-right:auto">Doa restu Anda adalah karunia terbesar bagi kami. Namun jika ingin memberi, Anda dapat mengirimkan hadiah secara cashless.</p>
+      <p style="font-size:0.78rem;color:var(--text-soft);margin-top:4px;line-height:1.6;max-width:280px;margin:4px auto 0">Doa restu Anda adalah karunia terbesar bagi kami. Namun jika ingin memberi, Anda dapat mengirimkan hadiah secara cashless.</p>
       <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
-
     <div class="gift-card">
       <div class="gift-glow"></div>
       <div class="gift-header">
@@ -326,9 +360,7 @@
       </div>
       <div class="gift-number" id="rek0">082298463886</div>
       <div class="gift-name">a.n Farrel Aulia Irfealdo</div>
-      <button class="btn-copy" onclick="copyText('rek0', this)">
-        📋 Salin Nomor
-      </button>
+      <button class="btn-copy" onclick="copyText('rek0', this)">📋 Salin Nomor</button>
     </div>
   </section>
 
@@ -339,14 +371,10 @@
       <h2 class="sec-title-script">RSVP & Ucapan</h2>
       <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
-
-    <!-- Live ucapan list -->
     <div class="ucapan-list" id="ucapan-list">
       <div class="ucapan-empty" id="ucapan-empty">Belum ada ucapan. Jadilah yang pertama! 🌸</div>
     </div>
-
     <div class="ornament-divider sm" style="margin-bottom:18px"><span></span><i>✦</i><span></span></div>
-
     <div class="form-group">
       <label>Nama Lengkap</label>
       <input type="text" id="nama" placeholder="Nama Anda">
@@ -385,16 +413,13 @@
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav" id="bottom-nav">
   <a href="javascript:void(0)" onclick="navScroll('sec-home')" class="nav-item active" data-section="home">
-    <span class="nav-icon">🏠</span>
-    <span class="nav-label">Home</span>
+    <span class="nav-icon">🏠</span><span class="nav-label">Home</span>
   </a>
   <a href="javascript:void(0)" onclick="navScroll('sec-acara')" class="nav-item" data-section="acara">
-    <span class="nav-icon">📅</span>
-    <span class="nav-label">Acara</span>
+    <span class="nav-icon">📅</span><span class="nav-label">Acara</span>
   </a>
   <a href="javascript:void(0)" onclick="navScroll('sec-rsvp')" class="nav-item" data-section="rsvp">
-    <span class="nav-icon">💌</span>
-    <span class="nav-label">RSVP</span>
+    <span class="nav-icon">💌</span><span class="nav-label">RSVP</span>
   </a>
 </nav>
 
@@ -410,79 +435,228 @@
 
 <script src="script.js"></script>
 <script>
-// ===== UCAPAN LOKAL (simpan di localStorage) =====
-const UCAPAN_KEY = 'farrel_amelia_ucapan';
+// ===== LOADING SCREEN =====
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const ls = document.getElementById('loading-screen');
+    ls.classList.add('loading-hide');
+    setTimeout(() => ls.style.display = 'none', 600);
+  }, 1800);
+});
 
-function loadUcapan() {
-  try {
-    return JSON.parse(localStorage.getItem(UCAPAN_KEY)) || [];
-  } catch(e) { return []; }
+// ===== NAMA TAMU =====
+const urlParams2 = new URLSearchParams(window.location.search);
+const guestRaw = urlParams2.get('to');
+if (guestRaw) {
+  const name = decodeURIComponent(guestRaw);
+  const envEl = document.getElementById('env-guest-name');
+  if (envEl) envEl.textContent = name;
 }
 
+// ===== AMPLOP DIGITAL =====
+let envelopeOpened = false;
+
+function showEnvelope() {
+  const overlay = document.getElementById('envelope-overlay');
+  overlay.classList.add('show');
+  // auto tap hint animation
+  setTimeout(() => {
+    const seal = document.getElementById('env-seal');
+    if (seal) seal.classList.add('pulse');
+  }, 600);
+}
+
+document.getElementById('envelope').addEventListener('click', function() {
+  if (envelopeOpened) return;
+  envelopeOpened = true;
+  const flap = document.getElementById('env-flap');
+  const letter = document.getElementById('env-letter');
+  const seal = document.getElementById('env-seal');
+  // open flap
+  flap.classList.add('open');
+  seal.style.opacity = '0';
+  // slide letter up
+  setTimeout(() => {
+    letter.classList.add('open');
+  }, 500);
+});
+
+function openFromEnvelope() {
+  const overlay = document.getElementById('envelope-overlay');
+  overlay.classList.add('hide');
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    realOpenInvitation();
+  }, 600);
+}
+
+function realOpenInvitation() {
+  document.body.classList.add('cover-open');
+  const main = document.getElementById('main-content');
+  main.classList.add('show');
+  document.getElementById('bottom-nav').classList.add('show');
+  document.getElementById('musicBtn').classList.add('show');
+  setTimeout(() => {
+    const music = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    music.play().then(() => {
+      musicBtn.classList.add('playing');
+      musicBtn.querySelector('.music-icon').innerText = '🎶';
+    }).catch(() => {});
+  }, 800);
+  setTimeout(() => {
+    initScrollObserver();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, 900);
+}
+
+// ===== PETALS =====
+const petalCanvas = document.getElementById('petalCanvas');
+const ctx = petalCanvas.getContext('2d');
+let petals = [];
+let petalActive = false;
+
+function resizePetal() {
+  petalCanvas.width = window.innerWidth;
+  petalCanvas.height = window.innerHeight;
+}
+resizePetal();
+window.addEventListener('resize', resizePetal);
+
+const PETAL_COLORS = [
+  'rgba(232,160,144,0.7)',
+  'rgba(245,213,204,0.8)',
+  'rgba(255,200,210,0.65)',
+  'rgba(201,168,76,0.5)',
+  'rgba(220,180,160,0.6)',
+  'rgba(255,220,225,0.7)',
+];
+
+function createPetal() {
+  return {
+    x: Math.random() * petalCanvas.width,
+    y: -20,
+    size: 6 + Math.random() * 10,
+    speedY: 0.6 + Math.random() * 1.2,
+    speedX: (Math.random() - 0.5) * 1.2,
+    rotation: Math.random() * Math.PI * 2,
+    rotSpeed: (Math.random() - 0.5) * 0.04,
+    opacity: 0.5 + Math.random() * 0.5,
+    color: PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)],
+    wobble: Math.random() * Math.PI * 2,
+    wobbleSpeed: 0.02 + Math.random() * 0.02,
+  };
+}
+
+function drawPetal(p) {
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.rotate(p.rotation);
+  ctx.globalAlpha = p.opacity;
+  ctx.fillStyle = p.color;
+  ctx.beginPath();
+  ctx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function animatePetals() {
+  if (!petalActive) return;
+  ctx.clearRect(0, 0, petalCanvas.width, petalCanvas.height);
+
+  // spawn
+  if (petals.length < 35 && Math.random() < 0.25) {
+    petals.push(createPetal());
+  }
+
+  petals = petals.filter(p => p.y < petalCanvas.height + 30);
+  petals.forEach(p => {
+    p.wobble += p.wobbleSpeed;
+    p.x += p.speedX + Math.sin(p.wobble) * 0.6;
+    p.y += p.speedY;
+    p.rotation += p.rotSpeed;
+    drawPetal(p);
+  });
+
+  requestAnimationFrame(animatePetals);
+}
+
+// Start petals when main content shows
+const _origOpen = window.openInvitation;
+window.openInvitation = function(t) {
+  petalActive = true;
+  animatePetals();
+  if (_origOpen) _origOpen(t);
+};
+
+// Also start for envelope path
+const _realOpen = window.realOpenInvitation;
+window.realOpenInvitation = function() {
+  petalActive = true;
+  animatePetals();
+  document.body.classList.add('cover-open');
+  const main = document.getElementById('main-content');
+  main.classList.add('show');
+  document.getElementById('bottom-nav').classList.add('show');
+  document.getElementById('musicBtn').classList.add('show');
+  setTimeout(() => {
+    const music2 = document.getElementById('bgMusic');
+    const musicBtn2 = document.getElementById('musicBtn');
+    music2.play().then(() => {
+      musicBtn2.classList.add('playing');
+      musicBtn2.querySelector('.music-icon').innerText = '🎶';
+    }).catch(() => {});
+  }, 800);
+  setTimeout(() => {
+    initScrollObserver();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, 900);
+};
+
+// ===== UCAPAN LOKAL =====
+const UCAPAN_KEY = 'farrel_amelia_ucapan';
+function loadUcapan() {
+  try { return JSON.parse(localStorage.getItem(UCAPAN_KEY)) || []; } catch(e) { return []; }
+}
 function saveUcapan(list) {
   try { localStorage.setItem(UCAPAN_KEY, JSON.stringify(list)); } catch(e) {}
 }
-
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 function renderUcapan() {
   const list = loadUcapan();
   const container = document.getElementById('ucapan-list');
   const empty = document.getElementById('ucapan-empty');
-
-  // Remove existing ucapan items (keep empty msg)
   container.querySelectorAll('.ucapan-item').forEach(el => el.remove());
-
-  if (list.length === 0) {
-    if (empty) empty.style.display = 'block';
-    return;
-  }
-  if (empty) empty.style.display = 'none';
-
-  // Show latest 10 at top
-  [...list].reverse().slice(0, 10).forEach(u => {
+  if (list.length === 0) { if (empty) empty.style.display='block'; return; }
+  if (empty) empty.style.display='none';
+  [...list].reverse().slice(0,10).forEach(u => {
     const item = document.createElement('div');
     item.className = 'ucapan-item';
-
-    const hadirClass = u.hadir === 'hadir' ? '' : u.hadir === 'tidak' ? 'tidak' : 'ragu';
-    const hadirText = u.hadir === 'hadir' ? '✅ Hadir' : u.hadir === 'tidak' ? '❌ Tidak Hadir' : '🤔 Belum Pasti';
-
+    const hadirClass = u.hadir==='hadir' ? '' : u.hadir==='tidak' ? 'tidak' : 'ragu';
+    const hadirText  = u.hadir==='hadir' ? '✅ Hadir' : u.hadir==='tidak' ? '❌ Tidak Hadir' : '🤔 Belum Pasti';
     item.innerHTML = `
       <div class="ucapan-item-header">
         <span class="ucapan-nama">${escHtml(u.nama)}</span>
         <span class="ucapan-hadir ${hadirClass}">${hadirText}</span>
       </div>
-      <p class="ucapan-pesan">${escHtml(u.pesan)}</p>
-    `;
+      <p class="ucapan-pesan">${escHtml(u.pesan)}</p>`;
     container.appendChild(item);
   });
 }
-
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-// Override submitRSVP to also save locally
 const _origSubmit = window.submitRSVP;
 window.submitRSVP = function() {
   const nama   = document.getElementById('nama')?.value.trim();
   const hadir  = document.getElementById('hadir')?.value;
   const ucapan = document.getElementById('ucapan')?.value.trim();
-
-  if (!nama || !ucapan) {
-    alert('Harap isi nama dan ucapan terlebih dahulu.');
-    return;
-  }
-
-  // Save locally
+  if (!nama || !ucapan) { alert('Harap isi nama dan ucapan terlebih dahulu.'); return; }
   const list = loadUcapan();
   list.push({ nama, hadir, pesan: ucapan, time: Date.now() });
   saveUcapan(list);
   renderUcapan();
-
-  // Then call original (WhatsApp)
   if (_origSubmit) _origSubmit();
 };
-
-// Render on load
 document.addEventListener('DOMContentLoaded', renderUcapan);
 </script>
 </body>
