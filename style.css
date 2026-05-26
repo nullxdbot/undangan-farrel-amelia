@@ -1045,10 +1045,12 @@ footer::before {
   position: fixed; inset: 0; z-index: 8000;
   background: rgba(60,30,10,0.55);
   backdrop-filter: blur(6px);
-  display: none; align-items: center; justify-content: center;
-  opacity: 0; transition: opacity 0.4s ease;
+  display: none;
+  align-items: center; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
-#envelope-overlay.show { display: flex; opacity: 1; }
+#envelope-overlay.show { opacity: 1; }
 #envelope-overlay.hide { opacity: 0; pointer-events: none; }
 
 .envelope-wrap {

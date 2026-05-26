@@ -458,8 +458,10 @@ let envelopeOpened = false;
 
 function showEnvelope() {
   const overlay = document.getElementById('envelope-overlay');
-  overlay.classList.add('show');
-  // auto tap hint animation
+  overlay.style.display = 'flex';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    overlay.style.opacity = '1';
+  }));
   setTimeout(() => {
     const seal = document.getElementById('env-seal');
     if (seal) seal.classList.add('pulse');
@@ -483,11 +485,12 @@ document.getElementById('envelope').addEventListener('click', function() {
 
 function openFromEnvelope() {
   const overlay = document.getElementById('envelope-overlay');
-  overlay.classList.add('hide');
+  overlay.style.opacity = '0';
+  overlay.style.pointerEvents = 'none';
   setTimeout(() => {
     overlay.style.display = 'none';
     realOpenInvitation();
-  }, 600);
+  }, 500);
 }
 
 function realOpenInvitation() {
