@@ -1042,7 +1042,7 @@ footer::before {
 
 /* ===== AMPLOP OVERLAY ===== */
 #envelope-overlay {
-  position: fixed; inset: 0; z-index: 8000;
+  position: fixed; inset: 0; z-index: 9500;
   background: rgba(60,30,10,0.55);
   backdrop-filter: blur(6px);
   display: none;

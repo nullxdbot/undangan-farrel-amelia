@@ -435,6 +435,11 @@
 
 <script src="script.js"></script>
 <script>
+/* =============================================
+   INLINE SCRIPT — Amplop, Petals, Ucapan Lokal
+   (Semua konflik sudah dihapus & disatukan)
+   ============================================= */
+
 // ===== LOADING SCREEN =====
 window.addEventListener('load', () => {
   setTimeout(() => {
@@ -444,74 +449,16 @@ window.addEventListener('load', () => {
   }, 1800);
 });
 
-// ===== NAMA TAMU =====
-const urlParams2 = new URLSearchParams(window.location.search);
-const guestRaw = urlParams2.get('to');
-if (guestRaw) {
-  const name = decodeURIComponent(guestRaw);
-  const envEl = document.getElementById('env-guest-name');
-  if (envEl) envEl.textContent = name;
-}
-
-// ===== AMPLOP DIGITAL =====
-let envelopeOpened = false;
-
-function showEnvelope() {
-  const overlay = document.getElementById('envelope-overlay');
-  overlay.style.display = 'flex';
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    overlay.style.opacity = '1';
-  }));
-  setTimeout(() => {
-    const seal = document.getElementById('env-seal');
-    if (seal) seal.classList.add('pulse');
-  }, 600);
-}
-
-document.getElementById('envelope').addEventListener('click', function() {
-  if (envelopeOpened) return;
-  envelopeOpened = true;
-  const flap = document.getElementById('env-flap');
-  const letter = document.getElementById('env-letter');
-  const seal = document.getElementById('env-seal');
-  // open flap
-  flap.classList.add('open');
-  seal.style.opacity = '0';
-  // slide letter up
-  setTimeout(() => {
-    letter.classList.add('open');
-  }, 500);
-});
-
-function openFromEnvelope() {
-  const overlay = document.getElementById('envelope-overlay');
-  overlay.style.opacity = '0';
-  overlay.style.pointerEvents = 'none';
-  setTimeout(() => {
-    overlay.style.display = 'none';
-    realOpenInvitation();
-  }, 500);
-}
-
-function realOpenInvitation() {
-  document.body.classList.add('cover-open');
-  const main = document.getElementById('main-content');
-  main.classList.add('show');
-  document.getElementById('bottom-nav').classList.add('show');
-  document.getElementById('musicBtn').classList.add('show');
-  setTimeout(() => {
-    const music = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
-    music.play().then(() => {
-      musicBtn.classList.add('playing');
-      musicBtn.querySelector('.music-icon').innerText = '🎶';
-    }).catch(() => {});
-  }, 800);
-  setTimeout(() => {
-    initScrollObserver();
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, 900);
-}
+// ===== NAMA TAMU DI AMPLOP (dari URL ?to=) =====
+// (script.js sudah handle #guestName, ini hanya untuk #env-guest-name)
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  const raw = p.get('to');
+  if (raw) {
+    const el = document.getElementById('env-guest-name');
+    if (el) el.textContent = decodeURIComponent(raw);
+  }
+})();
 
 // ===== PETALS =====
 const petalCanvas = document.getElementById('petalCanvas');
@@ -566,12 +513,7 @@ function drawPetal(p) {
 function animatePetals() {
   if (!petalActive) return;
   ctx.clearRect(0, 0, petalCanvas.width, petalCanvas.height);
-
-  // spawn
-  if (petals.length < 35 && Math.random() < 0.25) {
-    petals.push(createPetal());
-  }
-
+  if (petals.length < 35 && Math.random() < 0.25) petals.push(createPetal());
   petals = petals.filter(p => p.y < petalCanvas.height + 30);
   petals.forEach(p => {
     p.wobble += p.wobbleSpeed;
@@ -580,41 +522,82 @@ function animatePetals() {
     p.rotation += p.rotSpeed;
     drawPetal(p);
   });
-
   requestAnimationFrame(animatePetals);
 }
 
-// Start petals when main content shows
-const _origOpen = window.openInvitation;
-window.openInvitation = function(t) {
+function startPetals() {
+  if (petalActive) return;
   petalActive = true;
   animatePetals();
-  if (_origOpen) _origOpen(t);
-};
+}
 
-// Also start for envelope path
-const _realOpen = window.realOpenInvitation;
-window.realOpenInvitation = function() {
-  petalActive = true;
-  animatePetals();
+// ===== FUNGSI UTAMA: BUKA KONTEN =====
+// Satu fungsi terpusat, dipanggil dari semua jalur
+function realOpenInvitation() {
+  startPetals();
   document.body.classList.add('cover-open');
   const main = document.getElementById('main-content');
   main.classList.add('show');
   document.getElementById('bottom-nav').classList.add('show');
   document.getElementById('musicBtn').classList.add('show');
   setTimeout(() => {
-    const music2 = document.getElementById('bgMusic');
-    const musicBtn2 = document.getElementById('musicBtn');
-    music2.play().then(() => {
-      musicBtn2.classList.add('playing');
-      musicBtn2.querySelector('.music-icon').innerText = '🎶';
+    const bgMusic  = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    bgMusic.play().then(() => {
+      isPlaying = true;
+      musicBtn.classList.add('playing');
+      musicBtn.querySelector('.music-icon').innerText = '🎶';
     }).catch(() => {});
   }, 800);
   setTimeout(() => {
     initScrollObserver();
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, 900);
+}
+
+// Patch openInvitation dari script.js agar petals ikut jalan
+const _origOpen = openInvitation;
+openInvitation = function(scrollTarget) {
+  startPetals();
+  _origOpen(scrollTarget);
 };
+
+// ===== AMPLOP DIGITAL =====
+let envelopeOpened = false;
+
+function showEnvelope() {
+  const overlay = document.getElementById('envelope-overlay');
+  overlay.style.display = 'flex';
+  // Double rAF agar transition opacity berjalan setelah display:flex diapply
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    overlay.style.opacity = '1';
+  }));
+  setTimeout(() => {
+    const seal = document.getElementById('env-seal');
+    if (seal) seal.classList.add('pulse');
+  }, 600);
+}
+
+document.getElementById('envelope').addEventListener('click', function() {
+  if (envelopeOpened) return;
+  envelopeOpened = true;
+  const flap  = document.getElementById('env-flap');
+  const letter = document.getElementById('env-letter');
+  const seal  = document.getElementById('env-seal');
+  flap.classList.add('open');
+  seal.style.opacity = '0';
+  setTimeout(() => { letter.classList.add('open'); }, 500);
+});
+
+function openFromEnvelope() {
+  const overlay = document.getElementById('envelope-overlay');
+  overlay.style.opacity = '0';
+  overlay.style.pointerEvents = 'none';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    realOpenInvitation();
+  }, 500);
+}
 
 // ===== UCAPAN LOKAL =====
 const UCAPAN_KEY = 'farrel_amelia_ucapan';
@@ -632,13 +615,13 @@ function renderUcapan() {
   const container = document.getElementById('ucapan-list');
   const empty = document.getElementById('ucapan-empty');
   container.querySelectorAll('.ucapan-item').forEach(el => el.remove());
-  if (list.length === 0) { if (empty) empty.style.display='block'; return; }
-  if (empty) empty.style.display='none';
-  [...list].reverse().slice(0,10).forEach(u => {
+  if (list.length === 0) { if (empty) empty.style.display = 'block'; return; }
+  if (empty) empty.style.display = 'none';
+  [...list].reverse().slice(0, 10).forEach(u => {
     const item = document.createElement('div');
     item.className = 'ucapan-item';
-    const hadirClass = u.hadir==='hadir' ? '' : u.hadir==='tidak' ? 'tidak' : 'ragu';
-    const hadirText  = u.hadir==='hadir' ? '✅ Hadir' : u.hadir==='tidak' ? '❌ Tidak Hadir' : '🤔 Belum Pasti';
+    const hadirClass = u.hadir === 'hadir' ? '' : u.hadir === 'tidak' ? 'tidak' : 'ragu';
+    const hadirText  = u.hadir === 'hadir' ? '✅ Hadir' : u.hadir === 'tidak' ? '❌ Tidak Hadir' : '🤔 Belum Pasti';
     item.innerHTML = `
       <div class="ucapan-item-header">
         <span class="ucapan-nama">${escHtml(u.nama)}</span>
@@ -648,8 +631,10 @@ function renderUcapan() {
     container.appendChild(item);
   });
 }
-const _origSubmit = window.submitRSVP;
-window.submitRSVP = function() {
+
+// Override submitRSVP dari script.js agar simpan ke localStorage juga
+const _origSubmit = submitRSVP;
+submitRSVP = function() {
   const nama   = document.getElementById('nama')?.value.trim();
   const hadir  = document.getElementById('hadir')?.value;
   const ucapan = document.getElementById('ucapan')?.value.trim();
@@ -658,8 +643,9 @@ window.submitRSVP = function() {
   list.push({ nama, hadir, pesan: ucapan, time: Date.now() });
   saveUcapan(list);
   renderUcapan();
-  if (_origSubmit) _origSubmit();
+  _origSubmit(); // kirim WA + tampilkan notif sukses
 };
+
 document.addEventListener('DOMContentLoaded', renderUcapan);
 </script>
 </body>
