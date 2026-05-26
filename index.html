@@ -6,29 +6,68 @@
   <title>The Wedding of Farrel & Amelia</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- PARTICLES CANVAS -->
-<canvas id="particleCanvas"></canvas>
-
 <!-- COVER -->
 <div id="cover">
-  <div class="cover-bg-aurora"></div>
-  <div class="cover-stars"></div>
+  <!-- Floral SVG corners -->
+  <div class="cover-floral-tl">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5 Q30 5 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M5 5 Q5 30 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <circle cx="22" cy="18" r="6" fill="none" stroke="#c4786a" stroke-width="1" opacity="0.5"/>
+      <circle cx="18" cy="22" r="4" fill="rgba(196,120,106,0.15)" stroke="#c4786a" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="30" cy="12" r="5" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <path d="M10 35 Q20 25 35 15" stroke="#8aaa8a" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <path d="M5 45 Q15 35 30 25" stroke="#c4786a" stroke-width="0.6" fill="none" opacity="0.3"/>
+      <circle cx="40" cy="20" r="3" fill="rgba(201,168,76,0.3)" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <path d="M15 50 Q25 40 40 32" stroke="#8aaa8a" stroke-width="0.6" fill="none" opacity="0.3"/>
+    </svg>
+  </div>
+  <div class="cover-floral-tr">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5 Q30 5 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M5 5 Q5 30 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <circle cx="22" cy="18" r="6" fill="none" stroke="#c4786a" stroke-width="1" opacity="0.5"/>
+      <circle cx="18" cy="22" r="4" fill="rgba(196,120,106,0.15)" stroke="#c4786a" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="30" cy="12" r="5" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <path d="M10 35 Q20 25 35 15" stroke="#8aaa8a" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <circle cx="40" cy="20" r="3" fill="rgba(201,168,76,0.3)" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="cover-floral-bl">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5 Q30 5 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M5 5 Q5 30 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <circle cx="22" cy="18" r="6" fill="none" stroke="#c4786a" stroke-width="1" opacity="0.5"/>
+      <circle cx="18" cy="22" r="4" fill="rgba(196,120,106,0.15)" stroke="#c4786a" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="30" cy="12" r="5" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <path d="M10 35 Q20 25 35 15" stroke="#8aaa8a" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <circle cx="40" cy="20" r="3" fill="rgba(201,168,76,0.3)" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="cover-floral-br">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5 Q30 5 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M5 5 Q5 30 30 30" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <circle cx="22" cy="18" r="6" fill="none" stroke="#c4786a" stroke-width="1" opacity="0.5"/>
+      <circle cx="18" cy="22" r="4" fill="rgba(196,120,106,0.15)" stroke="#c4786a" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="30" cy="12" r="5" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <path d="M10 35 Q20 25 35 15" stroke="#8aaa8a" stroke-width="0.8" fill="none" opacity="0.4"/>
+      <circle cx="40" cy="20" r="3" fill="rgba(201,168,76,0.3)" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+    </svg>
+  </div>
 
-  <div class="cover-frame tl"></div>
-  <div class="cover-frame tr"></div>
-  <div class="cover-frame bl"></div>
-  <div class="cover-frame br"></div>
+  <div class="cover-border"></div>
 
   <div class="cover-inner">
     <div class="cover-top-ornament">
-      <span class="ornament-line"></span>
-      <span class="ornament-diamond">◆</span>
-      <span class="ornament-line"></span>
+      <span class="orn-line"></span>
+      <span class="orn-diamond">◆</span>
+      <span class="orn-line"></span>
     </div>
 
     <p class="cover-label">— The Wedding of —</p>
@@ -47,9 +86,9 @@
     </h1>
 
     <p class="cover-date">
-      <span class="date-day">Minggu</span>
-      <span class="date-sep">·</span>
-      <span class="date-full">29 September 2029</span>
+      <span>Minggu</span>
+      <span class="sep">·</span>
+      <span>29 September 2029</span>
     </p>
 
     <div class="guest-box">
@@ -58,15 +97,15 @@
     </div>
 
     <button class="btn-open" onclick="openInvitation()">
-      <span class="btn-envelope">✦</span>
+      <span class="btn-star">✦</span>
       <span>Buka Undangan</span>
       <span class="btn-shimmer"></span>
     </button>
 
     <div class="cover-bottom-ornament">
-      <span class="ornament-line"></span>
-      <span class="ornament-diamond">◆</span>
-      <span class="ornament-line"></span>
+      <span class="orn-line"></span>
+      <span class="orn-diamond">◆</span>
+      <span class="orn-line"></span>
     </div>
   </div>
 </div>
@@ -74,56 +113,68 @@
 <!-- MAIN CONTENT -->
 <main id="main-content">
 
-  <!-- Section 1: Hero -->
+  <!-- Section 1: Hero / Save The Date -->
   <section class="section fade-in" id="sec-home">
-    <div class="hero-aurora"></div>
+    <div style="text-align:center">
+      <div class="hero-badge">Save The Date</div>
 
-    <div class="hero-badge">Save The Date</div>
-
-    <div class="hero-photo-wrap">
-      <div class="hero-photo-glow"></div>
-      <div class="hero-photo">
-        <img src="img/kita.jpg" alt="Farrel & Amelia">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-glow"></div>
+        <div class="hero-photo">
+          <img src="img/kita.jpg" alt="Farrel & Amelia">
+        </div>
       </div>
-    </div>
 
-    <h2 class="hero-names">
-      Farrel <span class="gold-amp">&</span> Amelia
-    </h2>
+      <h2 class="hero-names">
+        Farrel <span class="gold-amp">&</span> Amelia
+      </h2>
 
-    <div class="ornament-divider">
-      <span></span><i>✦</i><span></span>
-    </div>
-
-    <blockquote class="ayat">
-      <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
-      <cite>— QS. Ar-Rum: 21 —</cite>
-    </blockquote>
-
-    <div class="countdown-wrap">
-      <div class="countdown-box">
-        <span class="num" id="cd-d">--</span>
-        <span class="lbl">Hari</span>
+      <div class="ornament-divider">
+        <span></span><i>✦</i><span></span>
       </div>
-      <div class="countdown-sep">:</div>
-      <div class="countdown-box">
-        <span class="num" id="cd-h">--</span>
-        <span class="lbl">Jam</span>
-      </div>
-      <div class="countdown-sep">:</div>
-      <div class="countdown-box">
-        <span class="num" id="cd-m">--</span>
-        <span class="lbl">Menit</span>
-      </div>
-      <div class="countdown-sep">:</div>
-      <div class="countdown-box">
-        <span class="num" id="cd-s">--</span>
-        <span class="lbl">Detik</span>
+
+      <blockquote class="ayat">
+        <p>"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."</p>
+        <cite>— QS. Ar-Rum: 21 —</cite>
+      </blockquote>
+
+      <div class="countdown-wrap">
+        <div class="countdown-box">
+          <span class="num" id="cd-d">--</span>
+          <span class="lbl">Hari</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-box">
+          <span class="num" id="cd-h">--</span>
+          <span class="lbl">Jam</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-box">
+          <span class="num" id="cd-m">--</span>
+          <span class="lbl">Menit</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-box">
+          <span class="num" id="cd-s">--</span>
+          <span class="lbl">Detik</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Section 2: Mempelai -->
+  <!-- Section 2: Bismillah / Pembuka -->
+  <section class="section fade-in bismillah-section">
+    <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
+    <p class="bismillah-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+    <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
+    <p class="bismillah-text">
+      Maha Suci Allah yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, semoga ridho-Mu senantiasa tercurah mengiringi pernikahan kami.
+    </p>
+    <div class="ornament-divider sm"><span></span><i>◆</i><span></span></div>
+    <p class="bismillah-greeting">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
+  </section>
+
+  <!-- Section 3: Mempelai -->
   <section class="section fade-in">
     <div class="sec-header">
       <p class="sec-eyebrow">Mempelai</p>
@@ -133,12 +184,12 @@
 
     <div class="mempelai-grid">
       <div class="mempelai-card">
-        <div class="mempelai-photo groom-photo">
+        <div class="mempelai-photo">
           <img src="img/farrel.jpg" alt="Farrel">
         </div>
         <h3 class="mempelai-name">Farrel</h3>
         <p class="mempelai-full">Farrel Aulia Irfealdo</p>
-        <p class="mempelai-parents">Putra dari<br>Bpk. _______ & Ibu _______</p>
+        <p class="mempelai-parents">Putra dari<br>Bpk. _______ &<br>Ibu _______</p>
       </div>
 
       <div class="mempelai-center">
@@ -146,17 +197,17 @@
       </div>
 
       <div class="mempelai-card">
-        <div class="mempelai-photo bride-photo">
+        <div class="mempelai-photo">
           <img src="img/amelia.jpg" alt="Amelia">
         </div>
         <h3 class="mempelai-name">Amelia</h3>
         <p class="mempelai-full">Amelia Sofyan</p>
-        <p class="mempelai-parents">Putri dari<br>Bpk. _______ & Ibu _______</p>
+        <p class="mempelai-parents">Putri dari<br>Bpk. _______ &<br>Ibu _______</p>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: Acara -->
+  <!-- Section 4: Acara -->
   <section class="section fade-in" id="sec-acara">
     <div class="sec-header">
       <p class="sec-eyebrow">Agenda</p>
@@ -210,7 +261,7 @@
     </div>
   </section>
 
-  <!-- Section 4: Adab -->
+  <!-- Section 5: Adab -->
   <section class="section fade-in">
     <div class="sec-header">
       <p class="sec-eyebrow">Tata Krama</p>
@@ -225,24 +276,25 @@
       </div>
       <div class="adab-item">
         <div class="adab-icon">🤲</div>
-        <p>Mendoakan kedua mempelai</p>
+        <p>Mendoakan kedua mempelai dengan tulus dan ikhlas</p>
       </div>
       <div class="adab-item">
         <div class="adab-icon">🍽️</div>
-        <p>Memperhatikan adab makan dan minum</p>
+        <p>Memperhatikan adab makan dan minum dengan baik</p>
       </div>
       <div class="adab-item">
         <div class="adab-icon">🧥</div>
-        <p>Berpakaian sopan dan menutup aurat</p>
+        <p>Berpakaian sopan dan menutup aurat sesuai syariat</p>
       </div>
     </div>
   </section>
 
-  <!-- Section 5: Gift -->
+  <!-- Section 6: Gift -->
   <section class="section fade-in">
     <div class="sec-header">
       <p class="sec-eyebrow">Hadiah</p>
       <h2 class="sec-title-script">Wedding Gift</h2>
+      <p style="font-size:0.78rem;color:var(--text-soft);margin-top:4px;line-height:1.6;max-width:280px;margin-left:auto;margin-right:auto">Doa restu Anda adalah karunia terbesar bagi kami. Namun jika ingin memberi, Anda dapat mengirimkan hadiah secara cashless.</p>
       <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
 
@@ -260,44 +312,48 @@
     </div>
   </section>
 
-  <!-- Section 5: RSVP -->
+  <!-- Section 7: RSVP & Ucapan -->
   <section class="section fade-in" id="sec-rsvp">
     <div class="sec-header">
-      <p class="sec-eyebrow">Konfirmasi</p>
+      <p class="sec-eyebrow">Konfirmasi & Doa</p>
       <h2 class="sec-title-script">RSVP & Ucapan</h2>
       <div class="ornament-divider sm"><span></span><i>✦</i><span></span></div>
     </div>
 
-    <div class="form-wrap">
-      <div class="form-group">
-        <label>Nama Lengkap</label>
-        <input type="text" id="nama" placeholder="Nama Anda">
-      </div>
-      <div class="form-group">
-        <label>Kehadiran</label>
-        <select id="hadir">
-          <option value="hadir">✅ Insyaa Allah hadir</option>
-          <option value="tidak">❌ Tidak bisa hadir</option>
-          <option value="ragu">🤔 Belum pasti</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Pesan / Doa</label>
-        <textarea id="ucapan" placeholder="Tulis ucapan & doa untuk mempelai..."></textarea>
-      </div>
-      <button class="btn-whatsapp" onclick="submitRSVP()">
-        <span>💬</span> Kirim via WhatsApp
-        <span class="btn-shimmer"></span>
-      </button>
-      <div id="rsvp-success">✅ Terima kasih atas doa & ucapannya!</div>
+    <!-- Live ucapan list -->
+    <div class="ucapan-list" id="ucapan-list">
+      <div class="ucapan-empty" id="ucapan-empty">Belum ada ucapan. Jadilah yang pertama! 🌸</div>
     </div>
+
+    <div class="ornament-divider sm" style="margin-bottom:18px"><span></span><i>✦</i><span></span></div>
+
+    <div class="form-group">
+      <label>Nama Lengkap</label>
+      <input type="text" id="nama" placeholder="Nama Anda">
+    </div>
+    <div class="form-group">
+      <label>Kehadiran</label>
+      <select id="hadir">
+        <option value="hadir">✅ Insyaa Allah hadir</option>
+        <option value="tidak">❌ Tidak bisa hadir</option>
+        <option value="ragu">🤔 Belum pasti</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Pesan / Doa</label>
+      <textarea id="ucapan" placeholder="Tulis ucapan & doa untuk mempelai..."></textarea>
+    </div>
+    <button class="btn-whatsapp" onclick="submitRSVP()">
+      <span>💬</span> Kirim via WhatsApp
+      <span class="btn-shimmer"></span>
+    </button>
+    <div id="rsvp-success">✅ Terima kasih atas doa & ucapannya!</div>
   </section>
 
 </main>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-aurora"></div>
   <div class="ornament-divider footer-orn"><span></span><i>✦</i><span></span></div>
   <h2 class="footer-names">Farrel <span class="gold-amp">&</span> Amelia</h2>
   <p class="footer-msg">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir memberikan doa restu.</p>
@@ -315,10 +371,6 @@
   <a href="javascript:void(0)" onclick="navScroll('sec-acara')" class="nav-item" data-section="acara">
     <span class="nav-icon">📅</span>
     <span class="nav-label">Acara</span>
-  </a>
-  <a href="javascript:void(0)" class="nav-item" data-section="gallery">
-    <span class="nav-icon">🖼</span>
-    <span class="nav-label">Gallery</span>
   </a>
   <a href="javascript:void(0)" onclick="navScroll('sec-rsvp')" class="nav-item" data-section="rsvp">
     <span class="nav-icon">💌</span>
@@ -338,54 +390,80 @@
 
 <script src="script.js"></script>
 <script>
-// Particle canvas animation
-(function() {
-  const canvas = document.getElementById('particleCanvas');
-  const ctx = canvas.getContext('2d');
-  let particles = [];
+// ===== UCAPAN LOKAL (simpan di localStorage) =====
+const UCAPAN_KEY = 'farrel_amelia_ucapan';
 
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function loadUcapan() {
+  try {
+    return JSON.parse(localStorage.getItem(UCAPAN_KEY)) || [];
+  } catch(e) { return []; }
+}
+
+function saveUcapan(list) {
+  try { localStorage.setItem(UCAPAN_KEY, JSON.stringify(list)); } catch(e) {}
+}
+
+function renderUcapan() {
+  const list = loadUcapan();
+  const container = document.getElementById('ucapan-list');
+  const empty = document.getElementById('ucapan-empty');
+
+  // Remove existing ucapan items (keep empty msg)
+  container.querySelectorAll('.ucapan-item').forEach(el => el.remove());
+
+  if (list.length === 0) {
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  // Show latest 10 at top
+  [...list].reverse().slice(0, 10).forEach(u => {
+    const item = document.createElement('div');
+    item.className = 'ucapan-item';
+
+    const hadirClass = u.hadir === 'hadir' ? '' : u.hadir === 'tidak' ? 'tidak' : 'ragu';
+    const hadirText = u.hadir === 'hadir' ? '✅ Hadir' : u.hadir === 'tidak' ? '❌ Tidak Hadir' : '🤔 Belum Pasti';
+
+    item.innerHTML = `
+      <div class="ucapan-item-header">
+        <span class="ucapan-nama">${escHtml(u.nama)}</span>
+        <span class="ucapan-hadir ${hadirClass}">${hadirText}</span>
+      </div>
+      <p class="ucapan-pesan">${escHtml(u.pesan)}</p>
+    `;
+    container.appendChild(item);
+  });
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Override submitRSVP to also save locally
+const _origSubmit = window.submitRSVP;
+window.submitRSVP = function() {
+  const nama   = document.getElementById('nama')?.value.trim();
+  const hadir  = document.getElementById('hadir')?.value;
+  const ucapan = document.getElementById('ucapan')?.value.trim();
+
+  if (!nama || !ucapan) {
+    alert('Harap isi nama dan ucapan terlebih dahulu.');
+    return;
   }
 
-  function createParticle() {
-    return {
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 2.5 + 0.5,
-      dx: (Math.random() - 0.5) * 0.3,
-      dy: -Math.random() * 0.4 - 0.1,
-      opacity: Math.random() * 0.5 + 0.1,
-      color: Math.random() > 0.6 ? '#c9a84c' : '#7ab8e8'
-    };
-  }
+  // Save locally
+  const list = loadUcapan();
+  list.push({ nama, hadir, pesan: ucapan, time: Date.now() });
+  saveUcapan(list);
+  renderUcapan();
 
-  function init() {
-    resize();
-    particles = Array.from({ length: 60 }, createParticle);
-  }
+  // Then call original (WhatsApp)
+  if (_origSubmit) _origSubmit();
+};
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((p, i) => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = p.opacity;
-      ctx.fill();
-      p.x += p.dx;
-      p.y += p.dy;
-      if (p.y < -10) particles[i] = { ...createParticle(), y: canvas.height + 10 };
-    });
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(animate);
-  }
-
-  window.addEventListener('resize', resize);
-  init();
-  animate();
-})();
+// Render on load
+document.addEventListener('DOMContentLoaded', renderUcapan);
 </script>
 </body>
 </html>
