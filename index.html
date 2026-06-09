@@ -142,7 +142,7 @@
     <div class="cover-photo-wrap">
       <div class="cover-photo-ring"></div>
       <div class="cover-photo">
-        <img src="img/kita.jpg" alt="Farrel & Amelia">
+        <img src="img/kita.jpg" alt="Farrel & Amelia" loading="lazy">
       </div>
     </div>
     <h1 class="cover-names">
@@ -182,7 +182,7 @@
       <div class="hero-photo-wrap">
         <div class="hero-photo-glow"></div>
         <div class="hero-photo">
-          <img src="img/kita.jpg" alt="Farrel & Amelia">
+          <img src="img/kita.jpg" alt="Farrel & Amelia" loading="lazy">
         </div>
       </div>
       <h2 class="hero-names">Farrel <span class="gold-amp">&</span> Amelia</h2>
@@ -223,7 +223,7 @@
     <div class="mempelai-grid">
       <div class="mempelai-card">
         <div class="mempelai-photo">
-          <img src="img/farrel.jpg" alt="Farrel">
+          <img src="img/farrel.jpg" alt="Farrel" loading="lazy">
         </div>
         <h3 class="mempelai-name">Farrel</h3>
         <p class="mempelai-full">Farrel Aulia Irfealdo</p>
@@ -234,7 +234,7 @@
       </div>
       <div class="mempelai-card">
         <div class="mempelai-photo">
-          <img src="img/amelia.jpg" alt="Amelia">
+          <img src="img/amelia.jpg" alt="Amelia" loading="lazy">
         </div>
         <h3 class="mempelai-name">Amelia</h3>
         <p class="mempelai-full">Amelia Sofyan</p>
@@ -367,7 +367,7 @@
         <div class="gift-glow"></div>
         <div class="gift-header">
           <div class="gift-bank-wrap">
-            <img src="pict/DANA_icon.webp" class="gift-icon" alt="DANA">
+            <img src="pict/DANA_icon.webp" class="gift-icon" alt="DANA" loading="lazy">
             <span class="gift-bank">DANA</span>
           </div>
           <span class="gift-badge">e-Wallet</span>
@@ -381,7 +381,7 @@
         <div class="gift-glow"></div>
         <div class="gift-header">
           <div class="gift-bank-wrap">
-            <img src="pict/GoPay_icon.webp" class="gift-icon" alt="GoPay">
+            <img src="pict/GoPay_icon.webp" class="gift-icon" alt="GoPay" loading="lazy">
             <span class="gift-bank">GoPay</span>
           </div>
           <span class="gift-badge">e-Wallet</span>
@@ -395,7 +395,7 @@
         <div class="gift-glow"></div>
         <div class="gift-header">
           <div class="gift-bank-wrap">
-            <img src="pict/SeaBank_icon.webp" class="gift-icon" alt="SeaBank">
+            <img src="pict/SeaBank_icon.webp" class="gift-icon" alt="SeaBank" loading="lazy">
             <span class="gift-bank">SeaBank</span>
           </div>
           <span class="gift-badge">e-Wallet</span>
@@ -412,7 +412,7 @@
         <div class="gift-glow"></div>
         <div class="gift-header">
           <div class="gift-bank-wrap">
-            <img src="pict/BNI_icon.webp" class="gift-icon" alt="BNI">
+            <img src="pict/BNI_icon.webp" class="gift-icon" alt="BNI" loading="lazy">
             <span class="gift-bank">BNI</span>
           </div>
           <span class="gift-badge">Bank</span>
@@ -433,7 +433,7 @@
         </div>
         <p style="font-size:0.72rem;color:var(--text-soft);margin-bottom:14px;text-align:center">Scan kode QRIS di bawah menggunakan aplikasi e-wallet atau mobile banking apapun.</p>
         <div class="qris-img-wrap">
-          <img src="pict/qris.jpg" alt="QRIS Farrel & Amelia" class="qris-img" onclick="openQrisModal()">
+          <img src="pict/qris.jpg" alt="QRIS Farrel & Amelia" class="qris-img" onclick="openQrisModal()" loading="lazy">
           <div class="qris-overlay" onclick="openQrisModal()">
             <span>🔍 Tap untuk perbesar</span>
           </div>
@@ -523,11 +523,70 @@
   <source src="img/Marry-Your-Daughter.mp3" type="audio/mpeg">
 </audio>
 
+<!-- ===== FIREBASE ===== -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAFqzkrGoOoMQDxpCCiAE29QFza7osfOUA",
+    authDomain: "undangan-farrel-amelia.firebaseapp.com",
+    databaseURL: "https://undangan-farrel-amelia-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "undangan-farrel-amelia",
+    storageBucket: "undangan-farrel-amelia.firebasestorage.app",
+    messagingSenderId: "995411017614",
+    appId: "1:995411017614:web:e9a2937c34577525df2edf"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const ucapanRef = ref(db, 'ucapan');
+
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function renderUcapanFirebase(list) {
+    const container = document.getElementById('ucapan-list');
+    const empty = document.getElementById('ucapan-empty');
+    container.querySelectorAll('.ucapan-item').forEach(el => el.remove());
+    if (list.length === 0) { if (empty) empty.style.display = 'block'; return; }
+    if (empty) empty.style.display = 'none';
+    [...list].reverse().slice(0, 20).forEach(u => {
+      const item = document.createElement('div');
+      item.className = 'ucapan-item';
+      const hadirClass = u.hadir === 'hadir' ? '' : u.hadir === 'tidak' ? 'tidak' : 'ragu';
+      const hadirText  = u.hadir === 'hadir' ? '✅ Hadir' : u.hadir === 'tidak' ? '❌ Tidak Hadir' : '🤔 Belum Pasti';
+      item.innerHTML = `
+        <div class="ucapan-item-header">
+          <span class="ucapan-nama">${escHtml(u.nama)}</span>
+          <span class="ucapan-hadir ${hadirClass}">${hadirText}</span>
+        </div>
+        <p class="ucapan-pesan">${escHtml(u.pesan)}</p>`;
+      container.appendChild(item);
+    });
+  }
+
+  // Realtime listener — update otomatis saat ada ucapan baru dari tamu manapun
+  onValue(ucapanRef, (snapshot) => {
+    const data = snapshot.val();
+    renderUcapanFirebase(data ? Object.values(data) : []);
+  });
+
+  // Expose ke window agar bisa dipanggil dari inline script
+  window.simpanUcapanFirebase = (nama, hadir, pesan) => {
+    push(ucapanRef, { nama, hadir, pesan, time: Date.now() });
+  };
+</script>
+
+<!-- ===== SCRIPT UTAMA ===== -->
 <script src="script.js"></script>
+
 <script>
 /* =============================================
-   INLINE SCRIPT — Amplop, Petals, Ucapan Lokal
-   (Semua konflik sudah dihapus & disatukan)
+   INLINE SCRIPT
    ============================================= */
 
 // ===== GIFT TABS =====
@@ -559,8 +618,7 @@ window.addEventListener('load', () => {
   }, 1800);
 });
 
-// ===== NAMA TAMU DI AMPLOP (dari URL ?to=) =====
-// (script.js sudah handle #guestName, ini hanya untuk #env-guest-name)
+// ===== NAMA TAMU DI AMPLOP =====
 (function() {
   const p = new URLSearchParams(window.location.search);
   const raw = p.get('to');
@@ -642,7 +700,6 @@ function startPetals() {
 }
 
 // ===== FUNGSI UTAMA: BUKA KONTEN =====
-// Satu fungsi terpusat, dipanggil dari semua jalur
 function realOpenInvitation() {
   startPetals();
   document.body.classList.add('cover-open');
@@ -665,7 +722,6 @@ function realOpenInvitation() {
   }, 900);
 }
 
-// Patch openInvitation dari script.js agar petals ikut jalan
 const _origOpen = openInvitation;
 openInvitation = function(scrollTarget) {
   startPetals();
@@ -678,7 +734,6 @@ let envelopeOpened = false;
 function showEnvelope() {
   const overlay = document.getElementById('envelope-overlay');
   overlay.style.display = 'flex';
-  // Double rAF agar transition opacity berjalan setelah display:flex diapply
   requestAnimationFrame(() => requestAnimationFrame(() => {
     overlay.style.opacity = '1';
   }));
@@ -709,54 +764,42 @@ function openFromEnvelope() {
   }, 500);
 }
 
-// ===== UCAPAN LOKAL =====
-const UCAPAN_KEY = 'farrel_amelia_ucapan';
-function loadUcapan() {
-  try { return JSON.parse(localStorage.getItem(UCAPAN_KEY)) || []; } catch(e) { return []; }
-}
-function saveUcapan(list) {
-  try { localStorage.setItem(UCAPAN_KEY, JSON.stringify(list)); } catch(e) {}
-}
-function escHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function renderUcapan() {
-  const list = loadUcapan();
-  const container = document.getElementById('ucapan-list');
-  const empty = document.getElementById('ucapan-empty');
-  container.querySelectorAll('.ucapan-item').forEach(el => el.remove());
-  if (list.length === 0) { if (empty) empty.style.display = 'block'; return; }
-  if (empty) empty.style.display = 'none';
-  [...list].reverse().slice(0, 10).forEach(u => {
-    const item = document.createElement('div');
-    item.className = 'ucapan-item';
-    const hadirClass = u.hadir === 'hadir' ? '' : u.hadir === 'tidak' ? 'tidak' : 'ragu';
-    const hadirText  = u.hadir === 'hadir' ? '✅ Hadir' : u.hadir === 'tidak' ? '❌ Tidak Hadir' : '🤔 Belum Pasti';
-    item.innerHTML = `
-      <div class="ucapan-item-header">
-        <span class="ucapan-nama">${escHtml(u.nama)}</span>
-        <span class="ucapan-hadir ${hadirClass}">${hadirText}</span>
-      </div>
-      <p class="ucapan-pesan">${escHtml(u.pesan)}</p>`;
-    container.appendChild(item);
-  });
-}
+// ===== SUBMIT RSVP — Firebase + WhatsApp =====
+function submitRSVP() {
+  const nama  = document.getElementById('nama')?.value.trim();
+  const hadir = document.getElementById('hadir')?.value;
+  const pesan = document.getElementById('ucapan')?.value.trim();
 
-// Override submitRSVP dari script.js agar simpan ke localStorage juga
-const _origSubmit = submitRSVP;
-submitRSVP = function() {
-  const nama   = document.getElementById('nama')?.value.trim();
-  const hadir  = document.getElementById('hadir')?.value;
-  const ucapan = document.getElementById('ucapan')?.value.trim();
-  if (!nama || !ucapan) { alert('Harap isi nama dan ucapan terlebih dahulu.'); return; }
-  const list = loadUcapan();
-  list.push({ nama, hadir, pesan: ucapan, time: Date.now() });
-  saveUcapan(list);
-  renderUcapan();
-  _origSubmit(); // kirim WA + tampilkan notif sukses
-};
+  if (!nama || !pesan) {
+    alert('Harap isi nama dan ucapan terlebih dahulu.');
+    return;
+  }
 
-document.addEventListener('DOMContentLoaded', renderUcapan);
+  // Simpan ke Firebase (tampil real-time ke semua tamu)
+  if (window.simpanUcapanFirebase) {
+    window.simpanUcapanFirebase(nama, hadir, pesan);
+  }
+
+  // Kirim via WhatsApp
+  const hadirText = hadir === 'hadir' ? 'Insyaa Allah hadir' :
+                    hadir === 'tidak' ? 'Tidak bisa hadir' : 'Belum pasti';
+  const waNumber = '6282298463886';
+  const msg = encodeURIComponent(
+    `Assalamu'alaikum,\n\nSaya *${nama}* menyampaikan:\n\nKehadiran: ${hadirText}\n\nUcapan/Doa:\n${pesan}\n\nSemoga pernikahan Farrel & Amelia sakinah, mawaddah, warahmah. Aamiin 🌸`
+  );
+  window.open(`https://wa.me/${waNumber}?text=${msg}`, '_blank');
+
+  // Notif sukses
+  const sukses = document.getElementById('rsvp-success');
+  if (sukses) {
+    sukses.style.display = 'block';
+    setTimeout(() => { sukses.style.display = 'none'; }, 4000);
+  }
+
+  // Reset form
+  document.getElementById('ucapan').value = '';
+  document.getElementById('nama').value = '';
+}
 </script>
 </body>
 </html>
